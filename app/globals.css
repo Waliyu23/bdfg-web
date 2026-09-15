@@ -305,7 +305,7 @@
   }
 
   .ticker-label {
-    @apply whitespace-nowrap font-display text-[2rem] leading-none text-white/90 transition-colors duration-300 sm:text-[2.75rem] lg:text-[3.5rem];
+    @apply whitespace-nowrap font-display text-[1.75rem] leading-none text-white/90 transition-colors duration-300 sm:text-[2.25rem] lg:text-[2.75rem];
   }
 
   .ticker-item:hover .ticker-label,

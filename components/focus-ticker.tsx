@@ -15,18 +15,11 @@ export default function FocusTicker() {
   return (
     <section
       aria-labelledby="focus-ticker-heading"
-      className="relative overflow-hidden border-y border-blue-800/60 bg-blue-900 py-8 text-white sm:py-10"
+      className="relative overflow-hidden border-y border-blue-800/60 bg-blue-900 py-3 text-white sm:py-4"
     >
       <h2 id="focus-ticker-heading" className="sr-only">
         Our focus areas
       </h2>
-
-      <div className="shell flex items-center gap-3 pb-6 sm:pb-7">
-        <span className="h-px w-8 bg-gold-400" aria-hidden="true" />
-        <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.22em] text-gold-300">
-          Focus areas
-        </p>
-      </div>
 
       <div className="ticker" data-ticker>
         <ul className="ticker-track">

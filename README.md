@@ -141,7 +141,9 @@ What changed:
 ## Focus-area ticker
 
 `components/focus-ticker.tsx` renders a full-bleed navy band directly under the hero
-with the five focus areas set in large Fraunces display type, scrolling continuously.
+with the five focus areas set in large Fraunces display type, scrolling continuously. The
+band is deliberately shallow (78px desktop / 54px mobile) and carries no heading label —
+the accessible name lives in a visually hidden `<h2>`.
 The list is duplicated for a seamless loop (the second copy is `aria-hidden` and
 `tabIndex={-1}`), each title links to its `/focus-areas/<slug>/` page, hovering or
 keyboard focus pauses the animation, and under `prefers-reduced-motion: reduce` the
