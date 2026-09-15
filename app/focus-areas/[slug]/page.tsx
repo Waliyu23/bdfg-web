@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Photo from "@/components/photo";
 import Link from "@/components/link";
 import { notFound } from "next/navigation";
 
@@ -7,7 +7,11 @@ import CheckIcon from "@/components/check-icon";
 import CtaBand from "@/components/cta-band";
 import FocusAreaCard from "@/components/focus-area-card";
 import PageHero from "@/components/page-hero";
-import { focusAreas, getFocusArea, getOtherFocusAreas } from "@/lib/focus-areas";
+import {
+  focusAreas,
+  getFocusArea,
+  getOtherFocusAreas,
+} from "@/lib/focus-areas";
 
 type Params = { slug: string };
 
@@ -35,7 +39,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function FocusAreaPage({ params }: { params: Promise<Params> }) {
+export default async function FocusAreaPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
   const { slug } = await params;
   const area = getFocusArea(slug);
   if (!area) notFound();
@@ -48,17 +56,20 @@ export default async function FocusAreaPage({ params }: { params: Promise<Params
         eyebrow="Focus area"
         title={area.title}
         lede={area.lede}
-        crumbs={[{ label: "Focus Areas", href: "/focus-areas" }, { label: area.title }]}
+        crumbs={[
+          { label: "Focus Areas", href: "/focus-areas" },
+          { label: area.title },
+        ]}
       />
 
       <section className="pt-12 sm:pt-16">
         <div className="shell">
           <figure className="reveal overflow-hidden rounded-xl2 shadow-card">
-            <Image
+            <Photo
               src={area.image}
               alt={area.imageAlt}
-              width={1600}
-              height={1200}
+              width={1536}
+              height={1024}
               priority
               sizes="(max-width: 1200px) 100vw, 1140px"
               className="h-[260px] w-full object-cover sm:h-[420px] lg:h-[480px]"
@@ -71,10 +82,14 @@ export default async function FocusAreaPage({ params }: { params: Promise<Params
         <div className="shell grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
           <div>
             <div className="reveal prose-body max-w-prose">
-              <p className="!text-[1.0625rem] !leading-[1.75] !text-ink/85">{area.intro}</p>
+              <p className="!text-[1.0625rem] !leading-[1.75] !text-ink/85">
+                {area.intro}
+              </p>
             </div>
 
-            <h2 className="reveal h2 mt-14 text-blue-900">What this looks like in practice</h2>
+            <h2 className="reveal h2 mt-14 text-blue-900">
+              What this looks like in practice
+            </h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2">
               {area.pillars.map((pillar, index) => (
                 <div
@@ -85,7 +100,9 @@ export default async function FocusAreaPage({ params }: { params: Promise<Params
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="h3 mt-3 text-blue-800">{pillar.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-ink/65">{pillar.body}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-ink/65">
+                    {pillar.body}
+                  </p>
                 </div>
               ))}
             </div>
@@ -93,10 +110,15 @@ export default async function FocusAreaPage({ params }: { params: Promise<Params
 
           <aside className="reveal lg:sticky lg:top-28 lg:self-start">
             <div className="rounded-xl2 bg-blue-900 p-7 text-white">
-              <h2 className="font-display text-lg">What we are working towards</h2>
+              <h2 className="font-display text-lg">
+                What we are working towards
+              </h2>
               <ul className="mt-5 space-y-4">
                 {area.goals.map((goal) => (
-                  <li key={goal} className="flex gap-3 text-sm leading-relaxed text-white/80">
+                  <li
+                    key={goal}
+                    className="flex gap-3 text-sm leading-relaxed text-white/80"
+                  >
                     <CheckIcon />
                     <span>{goal}</span>
                   </li>

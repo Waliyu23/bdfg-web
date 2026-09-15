@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import PhotoGallery from "@/components/photo-gallery";
 
 import CtaBand from "@/components/cta-band";
 import PageHero from "@/components/page-hero";
@@ -17,8 +17,18 @@ const stats = [
     label: "Years of community service",
     note: "Incorporated in Ghana since 2001",
   },
-  { value: "3", suffix: "", label: "Operational offices", note: "Accra, Tamale and Daboya" },
-  { value: "5", suffix: "", label: "Programme focus areas", note: "From education to fellowships" },
+  {
+    value: "3",
+    suffix: "",
+    label: "Operational offices",
+    note: "Accra, Tamale and Daboya",
+  },
+  {
+    value: "5",
+    suffix: "",
+    label: "Programme focus areas",
+    note: "From education to fellowships",
+  },
   {
     value: "100",
     suffix: "%",
@@ -108,10 +118,14 @@ export default function GalleryPage() {
               >
                 <dt className="font-display text-[2.25rem] leading-none text-blue-700">
                   {stat.value}
-                  {stat.suffix && <span className="text-gold-500">{stat.suffix}</span>}
+                  {stat.suffix && (
+                    <span className="text-gold-500">{stat.suffix}</span>
+                  )}
                 </dt>
                 <dd className="mt-4">
-                  <span className="block text-sm font-semibold text-blue-900">{stat.label}</span>
+                  <span className="block text-sm font-semibold text-blue-900">
+                    {stat.label}
+                  </span>
                   <span className="mt-1 block text-xs leading-relaxed text-ink/55">
                     {stat.note}
                   </span>
@@ -120,9 +134,9 @@ export default function GalleryPage() {
             ))}
           </dl>
           <p className="reveal mt-6 max-w-2xl text-xs leading-relaxed text-ink/45">
-            Programme-level figures — pupils supported, groups formed, boreholes delivered — are
-            verified per project and published in our annual reports. Contact the secretariat for
-            the current report.
+            Programme-level figures — pupils supported, groups formed, boreholes
+            delivered — are verified per project and published in our annual
+            reports. Contact the secretariat for the current report.
           </p>
         </div>
       </section>
@@ -133,29 +147,12 @@ export default function GalleryPage() {
             <p className="eyebrow">Photographs</p>
             <h2 className="h2 mt-5 text-blue-900">From our programmes</h2>
           </div>
-          <div className="mt-10 grid auto-rows-[220px] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {photos.map((photo) => (
-              <figure
-                key={photo.caption}
-                className={`reveal group relative overflow-hidden rounded-xl2 shadow-card ${photo.span}`}
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={1600}
-                  height={1200}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="h-full w-full object-cover transition-transform duration-[900ms] group-hover:scale-[1.05]"
-                />
-                <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-blue-900/85 via-blue-900/35 to-transparent px-5 pb-4 pt-10 text-xs font-medium text-white">
-                  {photo.caption}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <PhotoGallery photos={photos} />
+
           <p className="reveal mt-8 text-xs leading-relaxed text-ink/45">
-            Photographs are taken with the consent of participants. Images of children are used only
-            where a parent, guardian or school has given permission.
+            Photographs are taken with the consent of participants. Images of
+            children are used only where a parent, guardian or school has given
+            permission.
           </p>
         </div>
       </section>

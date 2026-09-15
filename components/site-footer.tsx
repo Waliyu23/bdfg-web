@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "@/components/link";
 
 import SocialIcon from "@/components/social-icon";
@@ -16,26 +15,33 @@ export default function SiteFooter() {
         <div>
           <div className="flex items-center gap-3">
             <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white p-[2px]">
-              <Image
+              <img
                 src={site.logo}
                 alt=""
-                width={512}
-                height={512}
+                width={256}
+                height={256}
+                loading="lazy"
+                decoding="async"
                 className="h-full w-full object-contain"
               />
             </span>
             <div className="leading-tight">
-              <p className="font-display text-[1.0625rem] font-semibold">{site.shortName}</p>
+              <p className="font-display text-[1.0625rem] font-semibold">
+                {site.shortName}
+              </p>
               <p className="mt-1 text-[0.6875rem] uppercase tracking-[0.2em] text-white/55">
                 {site.region}
               </p>
             </div>
           </div>
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/65">
-            A non-political, non-profit organisation incorporated under Ghana&rsquo;s Companies Act
-            in {site.founded}, working with marginalised communities across the country.
+            A non-political, non-profit organisation incorporated under
+            Ghana&rsquo;s Companies Act in {site.founded}, working with
+            marginalised communities across the country.
           </p>
-          <p className="mt-5 font-display text-base text-gold-300">&ldquo;{site.tagline}&rdquo;</p>
+          <p className="mt-5 font-display text-base text-gold-300">
+            &ldquo;{site.tagline}&rdquo;
+          </p>
         </div>
 
         <div>
@@ -63,7 +69,10 @@ export default function SiteFooter() {
           <ul className="mt-4 space-y-2.5">
             {exploreNav.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-sm text-white/80 hover:text-gold-300">
+                <Link
+                  href={link.href}
+                  className="text-sm text-white/80 hover:text-gold-300"
+                >
                   {link.label}
                 </Link>
               </li>
@@ -117,7 +126,10 @@ export default function SiteFooter() {
           <p>
             © {year} {site.name}. All rights reserved.
           </p>
-          <p>Non-political · Non-profit · Registered in Ghana since {site.founded}</p>
+          <p>
+            Non-political · Non-profit · Registered in Ghana since{" "}
+            {site.founded}
+          </p>
         </div>
       </div>
     </footer>

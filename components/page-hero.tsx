@@ -13,7 +13,12 @@ type PageHeroProps = {
 };
 
 /** Deep-blue page masthead with breadcrumb, eyebrow, title and optional lede. */
-export default function PageHero({ eyebrow, title, lede, crumbs = [] }: PageHeroProps) {
+export default function PageHero({
+  eyebrow,
+  title,
+  lede,
+  crumbs = [],
+}: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-blue-900 text-white">
       <div

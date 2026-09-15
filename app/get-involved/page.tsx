@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Photo from "@/components/photo";
 import Link from "@/components/link";
 
 import ContactForm from "@/components/contact-form";
@@ -88,7 +88,9 @@ export default function GetInvolvedPage() {
                 <h2 className="mt-4 font-display text-lg leading-snug text-blue-800">
                   {route.title}
                 </h2>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-ink/65">{route.body}</p>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-ink/65">
+                  {route.body}
+                </p>
               </div>
             ))}
           </div>
@@ -97,19 +99,21 @@ export default function GetInvolvedPage() {
 
       <section className="section bg-blue-50">
         <div className="shell grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div className="reveal overflow-hidden rounded-xl2 shadow-card">
-            <Image
+          <div className="reveal-left overflow-hidden rounded-xl2 shadow-card">
+            <Photo
               src="/images/gallery-1.webp"
               alt="Young people learning solar panel installation at a workbench with an instructor guiding them"
-              width={1600}
-              height={1200}
+              width={1536}
+              height={1024}
               sizes="(max-width: 1024px) 100vw, 48vw"
               className="h-[260px] w-full object-cover sm:h-[380px]"
             />
           </div>
           <div className="reveal">
             <p className="eyebrow">What to expect</p>
-            <h2 className="h2 mt-5 text-blue-900">How volunteering with us actually works.</h2>
+            <h2 className="h2 mt-5 text-blue-900">
+              How volunteering with us actually works.
+            </h2>
             <ol className="mt-8 space-y-6">
               {steps.map((step, index) => (
                 <li key={step.title} className="flex gap-4">
@@ -129,9 +133,11 @@ export default function GetInvolvedPage() {
             </ol>
             <div className="mt-9 rounded-xl border border-line bg-white p-5">
               <p className="text-sm leading-relaxed text-ink/70">
-                <strong className="font-semibold text-blue-900">Safeguarding.</strong> All
-                volunteers working with children or vulnerable adults are briefed on our
-                safeguarding policy and supervised at all times.
+                <strong className="font-semibold text-blue-900">
+                  Safeguarding.
+                </strong>{" "}
+                All volunteers working with children or vulnerable adults are
+                briefed on our safeguarding policy and supervised at all times.
               </p>
             </div>
           </div>
@@ -142,10 +148,12 @@ export default function GetInvolvedPage() {
         <div className="shell grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <div className="reveal">
             <p className="eyebrow">Sign up</p>
-            <h2 className="h2 mt-5 text-blue-900">Tell us how you would like to help.</h2>
+            <h2 className="h2 mt-5 text-blue-900">
+              Tell us how you would like to help.
+            </h2>
             <p className="lede mt-5">
-              Fill in the form and it will open a pre-filled email to the secretariat. Prefer to
-              write or call directly?
+              Fill in the form and it will open a pre-filled email to the
+              secretariat. Prefer to write or call directly?
             </p>
             <ul className="mt-7 space-y-3 text-sm">
               <li>
@@ -157,7 +165,10 @@ export default function GetInvolvedPage() {
                 </a>
               </li>
               <li>
-                <a className="font-semibold text-blue-700" href={site.phoneHref}>
+                <a
+                  className="font-semibold text-blue-700"
+                  href={site.phoneHref}
+                >
                   {site.phone}
                 </a>
               </li>

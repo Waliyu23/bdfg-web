@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Photo from "@/components/photo";
 import Link from "@/components/link";
 
 import CheckIcon from "@/components/check-icon";
@@ -102,11 +102,11 @@ export default function DonatePage() {
       <section className="pt-12 sm:pt-16">
         <div className="shell">
           <div className="reveal grid gap-8 overflow-hidden rounded-xl2 border border-line bg-white shadow-card lg:grid-cols-2 lg:gap-0">
-            <Image
+            <Photo
               src="/images/donate-impact.webp"
               alt="A schoolgirl smiling as she receives a stack of exercise books and a school bag"
-              width={1600}
-              height={900}
+              width={1536}
+              height={1024}
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="h-[240px] w-full object-cover sm:h-[340px] lg:h-full"
@@ -114,14 +114,16 @@ export default function DonatePage() {
             <div className="flex flex-col justify-center p-7 sm:p-10">
               <h2 className="h2 text-blue-900">Where the money goes</h2>
               <p className="mt-5 text-base leading-relaxed text-ink/70">
-                We are deliberately low-overhead. Field staff live in the communities they serve,
-                and community committees do much of the delivery. That means a modest donation
-                converts into a visible, countable result — a pupil equipped for a term, a girls
-                club running, a savings group formed.
+                We are deliberately low-overhead. Field staff live in the
+                communities they serve, and community committees do much of the
+                delivery. That means a modest donation converts into a visible,
+                countable result — a pupil equipped for a term, a girls club
+                running, a savings group formed.
               </p>
               <p className="mt-4 text-base leading-relaxed text-ink/70">
-                Unrestricted gifts are the most useful of all: they let us respond where the need is
-                greatest rather than where a budget line allows.
+                Unrestricted gifts are the most useful of all: they let us
+                respond where the need is greatest rather than where a budget
+                line allows.
               </p>
             </div>
           </div>
@@ -134,8 +136,9 @@ export default function DonatePage() {
             <p className="eyebrow">What your gift does</p>
             <h2 className="h2 mt-5 text-blue-900">Indicative giving levels</h2>
             <p className="lede mt-5">
-              Figures are indicative programme costs and vary by district and season. Ask us for the
-              current costing of any item before you give.
+              Figures are indicative programme costs and vary by district and
+              season. Ask us for the current costing of any item before you
+              give.
             </p>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -144,10 +147,19 @@ export default function DonatePage() {
                 key={level.title}
                 className="reveal flex flex-col rounded-xl2 border border-line bg-white p-6 shadow-card"
               >
-                <span className="font-display text-xl text-blue-700">{level.amount}</span>
-                <span aria-hidden="true" className="mt-4 block h-[3px] w-9 bg-gold-400" />
-                <h3 className="mt-5 text-base font-semibold text-blue-900">{level.title}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink/65">{level.body}</p>
+                <span className="font-display text-xl text-blue-700">
+                  {level.amount}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="mt-4 block h-[3px] w-9 bg-gold-400"
+                />
+                <h3 className="mt-5 text-base font-semibold text-blue-900">
+                  {level.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink/65">
+                  {level.body}
+                </p>
               </div>
             ))}
           </div>
@@ -162,17 +174,19 @@ export default function DonatePage() {
           </div>
           <div className="reveal mt-8 rounded-xl2 bg-gold-200/60 p-6">
             <p className="max-w-3xl text-sm leading-relaxed text-blue-900">
-              <strong className="font-semibold">Account details pending.</strong> The Mobile Money
-              and bank details below are placeholders. Send the Foundation&rsquo;s official account
-              information to{" "}
+              <strong className="font-semibold">
+                Account details pending.
+              </strong>{" "}
+              The Mobile Money and bank details below are placeholders. Send the
+              Foundation&rsquo;s official account information to{" "}
               <a
                 className="font-semibold underline decoration-2 underline-offset-2"
                 href={`mailto:${site.email}`}
               >
                 {site.email}
               </a>{" "}
-              and they will be published here. Until then, please contact the secretariat directly to
-              arrange a donation.
+              and they will be published here. Until then, please contact the
+              secretariat directly to arrange a donation.
             </p>
           </div>
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
@@ -181,7 +195,9 @@ export default function DonatePage() {
                 key={method.title}
                 className="reveal flex flex-col rounded-xl2 border border-line bg-white p-7 shadow-card"
               >
-                <h3 className="font-display text-lg text-blue-800">{method.title}</h3>
+                <h3 className="font-display text-lg text-blue-800">
+                  {method.title}
+                </h3>
                 <ul className="mt-5 space-y-2.5 text-sm text-ink/75">
                   {method.items.map((item) => (
                     <li key={item} className="flex gap-3">
@@ -193,7 +209,9 @@ export default function DonatePage() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 flex-1 text-xs leading-relaxed text-ink/50">{method.note}</p>
+                <p className="mt-6 flex-1 text-xs leading-relaxed text-ink/50">
+                  {method.note}
+                </p>
               </div>
             ))}
           </div>
@@ -204,7 +222,9 @@ export default function DonatePage() {
         <div className="shell grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div className="reveal">
             <p className="eyebrow">Accountability</p>
-            <h2 className="h2 mt-5 text-blue-900">What we promise every donor.</h2>
+            <h2 className="h2 mt-5 text-blue-900">
+              What we promise every donor.
+            </h2>
             <ul className="mt-8 space-y-5">
               {promises.map((promise) => (
                 <li
@@ -227,12 +247,14 @@ export default function DonatePage() {
           <div className="reveal rounded-xl2 bg-blue-900 p-8 text-white lg:sticky lg:top-28 lg:self-start">
             <h2 className="font-display text-xl">Arrange a donation</h2>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Speak to the secretariat about Mobile Money, bank transfer, in-kind giving or a
-              multi-year partnership.
+              Speak to the secretariat about Mobile Money, bank transfer,
+              in-kind giving or a multi-year partnership.
             </p>
             <dl className="mt-7 space-y-4 text-sm">
               <div>
-                <dt className="text-xs uppercase tracking-[0.12em] text-white/45">Email</dt>
+                <dt className="text-xs uppercase tracking-[0.12em] text-white/45">
+                  Email
+                </dt>
                 <dd className="mt-1">
                   <EmailLink className="wrap-any font-semibold text-gold-300" />
                 </dd>
@@ -242,14 +264,21 @@ export default function DonatePage() {
                   Phone / WhatsApp
                 </dt>
                 <dd className="mt-1">
-                  <a className="font-semibold text-gold-300" href={site.phoneHref}>
+                  <a
+                    className="font-semibold text-gold-300"
+                    href={site.phoneHref}
+                  >
                     {site.phone}
                   </a>
                 </dd>
               </div>
               <div>
-                <dt className="text-xs uppercase tracking-[0.12em] text-white/45">Offices</dt>
-                <dd className="mt-1 text-white/80">Accra · Tamale · Daboya, Savannah Region</dd>
+                <dt className="text-xs uppercase tracking-[0.12em] text-white/45">
+                  Offices
+                </dt>
+                <dd className="mt-1 text-white/80">
+                  Accra · Tamale · Daboya, Savannah Region
+                </dd>
               </div>
             </dl>
             <Link href="/contact" className="btn-gold mt-8 w-full">

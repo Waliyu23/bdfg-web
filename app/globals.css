@@ -1,3 +1,53 @@
+/* Self-hosted fonts: no third-party stylesheet, no extra DNS/TLS round trip.
+   `swap` shows the fallback immediately, so text never blocks the first paint. */
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var-latin-ext.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,6 +64,21 @@
   body {
     @apply bg-paper font-sans text-ink antialiased;
     font-feature-settings: "ss01" 1;
+    /* Safety net: decorative translated layers must never create a sideways scroll. */
+    overflow-x: clip;
+  }
+
+  /* One consistent, visible keyboard focus ring everywhere. */
+  :focus-visible {
+    outline: 2px solid #12409b;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .bg-blue-800 :focus-visible,
+  .bg-blue-900 :focus-visible,
+  footer :focus-visible {
+    outline-color: #ffcb33;
   }
 
   ::selection {
@@ -24,14 +89,14 @@
 
 @layer components {
   /* Layout containers */
-    /* Grid/flex children must be allowed to shrink so long words (emails, URLs)
+  /* Grid/flex children must be allowed to shrink so long words (emails, URLs)
      cannot widen a track past the viewport on narrow screens. */
   .shell > *,
   .shell-wide > * {
     min-width: 0;
   }
 
-.shell {
+  .shell {
     @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8;
   }
 
@@ -41,6 +106,9 @@
 
   .section {
     @apply py-16 sm:py-24;
+    /* Reveal animations slide content in horizontally; clip so they never
+       add a sideways scrollbar on narrow screens. */
+    overflow-x: clip;
   }
 
   /* Typography */
@@ -82,6 +150,23 @@
     @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200;
   }
 
+  /* Buttons lift on hover and depress on click — the feedback is subtle but
+     makes every control feel physically responsive. */
+  .btn-base {
+    @apply motion-safe:hover:-translate-y-0.5 motion-safe:active:translate-y-0 active:scale-[0.985];
+  }
+
+  /* Trailing arrows nudge forward with their button or link. */
+  .btn-base svg,
+  .link-underline svg {
+    @apply transition-transform duration-200;
+  }
+
+  .btn-base:hover svg,
+  .link-underline:hover svg {
+    @apply motion-safe:translate-x-1;
+  }
+
   .btn-primary {
     @apply btn-base bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lift;
   }
@@ -99,6 +184,12 @@
   }
 
   /* Surfaces */
+  /* Only shown after a failed submit, so the eye goes to the field at fault. */
+  .field-invalid {
+    border-color: #c0452f;
+    box-shadow: 0 0 0 3px rgba(192, 69, 47, 0.12);
+  }
+
   .card {
     @apply rounded-xl2 border border-line bg-white shadow-card;
   }
@@ -193,25 +284,106 @@
 }
 
 @layer utilities {
-  /* Scroll reveal — see components/reveal-on-scroll.tsx */
-  .reveal {
-    opacity: 0;
-    transform: translateY(18px);
-    transition:
-      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .reveal.is-in {
-    opacity: 1;
-    transform: none;
+  /* Thin scroll-progress line under the sticky header. */
+  .scroll-progress {
+    transform-origin: 0 50%;
+    transform: scaleX(var(--progress, 0));
+    transition: transform 120ms linear;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal {
+    .scroll-progress {
+      transition: none;
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     Motion
+     Every animation is wrapped so that `prefers-reduced-motion: reduce`
+     leaves the page fully visible and completely still.
+     --------------------------------------------------------------------- */
+
+  /* Scroll reveal — see components/reveal-on-scroll.tsx.
+     `--reveal-delay` is set per element to stagger items within a group. */
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 0;
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal {
+    transform: translateY(18px);
+  }
+
+  .reveal-left {
+    transform: translateX(-24px);
+  }
+
+  .reveal-right {
+    transform: translateX(24px);
+  }
+
+  .reveal-scale {
+    transform: scale(0.96);
+  }
+
+  .reveal.is-in,
+  .reveal-left.is-in,
+  .reveal-right.is-in,
+  .reveal-scale.is-in {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  /* First-paint entrance for above-the-fold content. */
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .rise-in {
+    animation: rise-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--rise-delay, 0ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale {
       opacity: 1;
       transform: none;
       transition: none;
+    }
+
+    .rise-in {
+      animation: none;
+    }
+
+    html {
+      scroll-behavior: auto;
     }
   }
 }

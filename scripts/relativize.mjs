@@ -14,6 +14,7 @@ const OUT = path.resolve("out");
 /** Asset and file URLs that live at the export root. */
 const ROOT_FILES = [
   "_next/",
+  "fonts/",
   "images/",
   "favicon.svg",
   "favicon.png",
@@ -59,6 +60,9 @@ function rewrite(text, prefix) {
     out = out.split(`"/${root}`).join(`"${prefix}${root}`);
     out = out.split(`'/${root}`).join(`'${prefix}${root}`);
     out = out.split(`(/${root}`).join(`(${prefix}${root}`);
+    // srcset/imagesrcset carry several URLs in one attribute: "a 480w, /b 768w".
+    out = out.split(`, /${root}`).join(`, ${prefix}${root}`);
+    out = out.split(`,/${root}`).join(`,${prefix}${root}`);
   }
 
   // Home link: href="/" -> href="../index.html"
@@ -91,13 +95,22 @@ collectRoutes(files);
 let rewritten = 0;
 for (const file of files) {
   const ext = path.extname(file);
-  if (![".html", ".txt", ".js", ".xml"].includes(ext)) continue;
+  if (![".html", ".txt", ".js", ".xml", ".css"].includes(ext)) continue;
 
   const original = await readFile(file, "utf8");
   let next = original;
 
   if (ext === ".html" || ext === ".txt") next = rewrite(next, prefixFor(file));
   if (ext === ".js") next = patchRuntime(next);
+  // Stylesheets live at _next/static/css/, so their url() references need the
+  // prefix of the stylesheet itself, not of the page including it.
+  if (ext === ".css") {
+    const prefix = prefixFor(file);
+    for (const root of ROOT_FILES) {
+      next = next.split(`url(/${root}`).join(`url(${prefix}${root}`);
+      next = next.split(`url("/${root}`).join(`url("${prefix}${root}`);
+    }
+  }
 
   if (next !== original) {
     await writeFile(file, next);

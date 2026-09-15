@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "@/components/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import ScrollProgress from "@/components/scroll-progress";
 import { primaryNav, site } from "@/lib/site";
 
 export default function SiteHeader() {
@@ -28,22 +28,24 @@ export default function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-paper/90 backdrop-blur-md transition-shadow duration-300 ${
+      className={`relative sticky top-0 z-50 border-b bg-paper/90 backdrop-blur-md transition-shadow duration-300 ${
         scrolled
           ? "border-line shadow-[0_10px_30px_-24px_rgba(10,23,51,.5)]"
           : "border-transparent"
       }`}
     >
+      <ScrollProgress />
       <div className="shell-wide flex h-[76px] items-center justify-between gap-4">
         <Link href="/" aria-label={`${site.name} home`} className="shrink-0">
           <span className="flex items-center gap-3">
             <span className="block h-14 w-14 shrink-0">
-              <Image
+              <img
                 src={site.logo}
                 alt=""
-                width={512}
-                height={512}
-                priority
+                width={256}
+                height={256}
+                fetchPriority="high"
+                decoding="async"
                 className="h-full w-full object-contain"
               />
             </span>

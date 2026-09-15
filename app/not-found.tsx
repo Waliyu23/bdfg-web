@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "@/components/link";
 
 import { site } from "@/lib/site";
@@ -12,11 +11,11 @@ export default function NotFound() {
     <section className="section">
       <div className="shell flex flex-col items-center py-16 text-center">
         <span className="block h-20 w-20 shrink-0">
-          <Image
+          <img
             src={site.logo}
             alt=""
-            width={512}
-            height={512}
+            width={256}
+            height={256}
             className="h-full w-full object-contain"
           />
         </span>
@@ -27,8 +26,8 @@ export default function NotFound() {
           We could not find that page.
         </h1>
         <p className="mt-5 max-w-md text-base leading-relaxed text-ink/65">
-          The link may be out of date. Try our focus areas, the latest news, or contact the
-          secretariat and we will point you to what you need.
+          The link may be out of date. Try our focus areas, the latest news, or
+          contact the secretariat and we will point you to what you need.
         </p>
         <div className="mt-9 flex flex-wrap justify-center gap-3">
           <Link href="/" className="btn-primary">

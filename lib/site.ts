@@ -14,7 +14,8 @@ export const site = {
   phoneHref: "tel:+233597399216",
   offices: ["Accra", "Tamale", "Daboya"],
   officesLabel: "Accra · Tamale · Daboya",
-  logo: "/images/logo-crest.png",
+  logo: "/images/logo-crest-128.webp",
+  logoSmall: "/images/logo-crest-64.webp",
   heroImage: "/images/hero-community.webp",
 } as const;
 

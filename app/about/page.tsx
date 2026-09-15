@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Photo from "@/components/photo";
 import Link from "@/components/link";
 
 import ArrowRight from "@/components/arrow-right";
@@ -85,12 +85,14 @@ const audiences = [
 ];
 
 const programmeSummaries: Record<string, string> = {
-  education: "Keeping children in school and helping them learn well once they are there.",
+  education:
+    "Keeping children in school and helping them learn well once they are there.",
   "human-rights":
     "Advocacy and legal awareness so that people know their rights and can claim them.",
   "women-youth-empowerment":
     "Skills, capital and confidence so women and young people can earn a living with dignity.",
-  "community-engagement": "Nothing is designed for a community without that community in the room.",
+  "community-engagement":
+    "Nothing is designed for a community without that community in the room.",
   "fellowships-conferences":
     "Convening, training and mentoring the next generation of Ghanaian changemakers.",
 };
@@ -151,13 +153,15 @@ export default function AboutPage() {
         <div className="shell grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div className="reveal">
             <p className="eyebrow">Our story</p>
-            <h2 className="h2 mt-5 text-blue-900">Founded in 2001, still in the same districts.</h2>
-            <div className="mt-8 overflow-hidden rounded-xl2 shadow-card">
-              <Image
+            <h2 className="h2 mt-5 text-blue-900">
+              Founded in 2001, still in the same districts.
+            </h2>
+            <div className="reveal-scale mt-8 overflow-hidden rounded-xl2 shadow-card">
+              <Photo
                 src="/images/about-field.webp"
                 alt="Two field officers walking with community members, including a young man in a wheelchair, in Daboya"
-                width={1600}
-                height={900}
+                width={1536}
+                height={1024}
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="h-[240px] w-full object-cover sm:h-[320px]"
               />
@@ -165,28 +169,32 @@ export default function AboutPage() {
           </div>
           <div className="reveal prose-body max-w-prose">
             <p>
-              Better Dream Foundation Ghana was established and incorporated under Ghana&rsquo;s
-              Companies Act in 2001 by a group of community organisers who kept meeting the same
-              problem: services existed on paper, but the households that needed them most could not
-              reach them. Distance, cost, disability, illiteracy and gender all stood in the way.
+              Better Dream Foundation Ghana was established and incorporated
+              under Ghana&rsquo;s Companies Act in 2001 by a group of community
+              organisers who kept meeting the same problem: services existed on
+              paper, but the households that needed them most could not reach
+              them. Distance, cost, disability, illiteracy and gender all stood
+              in the way.
             </p>
             <p>
-              We started with school enrolment and rights education, and grew as communities asked
-              for more — savings groups, water points, skills training, disability advocacy and,
-              more recently, structured fellowships for young Ghanaians who want to do this work
-              properly.
+              We started with school enrolment and rights education, and grew as
+              communities asked for more — savings groups, water points, skills
+              training, disability advocacy and, more recently, structured
+              fellowships for young Ghanaians who want to do this work properly.
             </p>
             <p>
-              Today the Foundation runs from three offices: a national secretariat in Accra, a zonal
-              office in Tamale, and a community field office in Daboya in the Savannah Region. That
-              geography is deliberate. It keeps us close to national partners and policy
-              conversations in the capital while our delivery staff remain resident in the
-              communities where programmes actually run.
+              Today the Foundation runs from three offices: a national
+              secretariat in Accra, a zonal office in Tamale, and a community
+              field office in Daboya in the Savannah Region. That geography is
+              deliberate. It keeps us close to national partners and policy
+              conversations in the capital while our delivery staff remain
+              resident in the communities where programmes actually run.
             </p>
             <p>
-              We remain non-political and non-profit. We do not campaign for candidates or parties,
-              and any surplus is returned to programmes. What we do campaign for is straightforward:
-              that a woman in North Gonja, a young person in Tamale and a person with a disability in
+              We remain non-political and non-profit. We do not campaign for
+              candidates or parties, and any surplus is returned to programmes.
+              What we do campaign for is straightforward: that a woman in North
+              Gonja, a young person in Tamale and a person with a disability in
               Accra can reach the same services as anyone else.
             </p>
           </div>
@@ -197,9 +205,16 @@ export default function AboutPage() {
         <div className="shell grid gap-6 md:grid-cols-3">
           {pillars.map((pillar) => (
             <div key={pillar.title} className="reveal card flex flex-col p-7">
-              <h2 className="font-display text-xl text-blue-800">{pillar.title}</h2>
-              <span aria-hidden="true" className="mt-4 block h-[3px] w-10 bg-gold-400" />
-              <p className="mt-5 text-sm leading-relaxed text-ink/70">{pillar.body}</p>
+              <h2 className="font-display text-xl text-blue-800">
+                {pillar.title}
+              </h2>
+              <span
+                aria-hidden="true"
+                className="mt-4 block h-[3px] w-10 bg-gold-400"
+              />
+              <p className="mt-5 text-sm leading-relaxed text-ink/70">
+                {pillar.body}
+              </p>
             </div>
           ))}
         </div>
@@ -209,11 +224,13 @@ export default function AboutPage() {
         <div className="shell">
           <div className="reveal max-w-2xl">
             <p className="eyebrow">Our approach</p>
-            <h2 className="h2 mt-5 text-blue-900">Four steps we do not skip.</h2>
+            <h2 className="h2 mt-5 text-blue-900">
+              Four steps we do not skip.
+            </h2>
             <p className="lede mt-5">
-              The order matters. Most failed development projects in Ghana were designed before
-              anyone asked the community what they needed — and closed before anyone handed anything
-              over.
+              The order matters. Most failed development projects in Ghana were
+              designed before anyone asked the community what they needed — and
+              closed before anyone handed anything over.
             </p>
           </div>
           <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -226,7 +243,9 @@ export default function AboutPage() {
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3 className="h3 mt-4 text-blue-800">{step.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink/65">{step.body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink/65">
+                  {step.body}
+                </p>
               </li>
             ))}
           </ol>
@@ -237,7 +256,10 @@ export default function AboutPage() {
         <div className="shell">
           <div className="reveal max-w-2xl">
             <p className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">
-              <span aria-hidden="true" className="block h-[2px] w-6 bg-gold-400" />
+              <span
+                aria-hidden="true"
+                className="block h-[2px] w-6 bg-gold-400"
+              />
               What we stand on
             </p>
             <h2 className="font-display text-[1.7rem] leading-[1.14] sm:text-[2.1rem]">
@@ -246,9 +268,14 @@ export default function AboutPage() {
           </div>
           <div className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((value) => (
-              <div key={value.title} className="reveal border-t border-white/15 pt-6">
+              <div
+                key={value.title}
+                className="reveal border-t border-white/15 pt-6"
+              >
                 <h3 className="text-base font-semibold">{value.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/65">{value.body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-white/65">
+                  {value.body}
+                </p>
               </div>
             ))}
           </div>
@@ -285,7 +312,9 @@ export default function AboutPage() {
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     <span>
-                      <span className="block font-display text-lg text-blue-800">{area.title}</span>
+                      <span className="block font-display text-lg text-blue-800">
+                        {area.title}
+                      </span>
                       <span className="mt-1 block max-w-md text-sm leading-relaxed text-ink/60">
                         {programmeSummaries[area.slug] ?? area.lede}
                       </span>
@@ -309,9 +338,10 @@ export default function AboutPage() {
               Strategic partnerships are how the work happens.
             </h2>
             <p className="lede mt-6">
-              The Foundation is deliberately small. What makes district-wide delivery possible is a
-              network of partners who bring mandate, reach, funding or expertise — and who hold us to
-              account for results in the communities we name.
+              The Foundation is deliberately small. What makes district-wide
+              delivery possible is a network of partners who bring mandate,
+              reach, funding or expertise — and who hold us to account for
+              results in the communities we name.
             </p>
           </div>
 
@@ -319,9 +349,13 @@ export default function AboutPage() {
             <p className="eyebrow">Our partners</p>
             <PartnerMarquee />
             <p className="mt-6 text-sm leading-relaxed text-ink/65">
-              These are default marks and generic partner titles. Send each organisation&rsquo;s
-              registered name and logo file (SVG or transparent PNG) to{" "}
-              <a href={`mailto:${site.email}`} className="link-underline wrap-any">
+              These are default marks and generic partner titles. Send each
+              organisation&rsquo;s registered name and logo file (SVG or
+              transparent PNG) to{" "}
+              <a
+                href={`mailto:${site.email}`}
+                className="link-underline wrap-any"
+              >
                 {site.email}
               </a>{" "}
               and they will replace the defaults exactly as supplied.
@@ -337,7 +371,9 @@ export default function AboutPage() {
                 <h3 className="mt-3 font-display text-lg leading-snug text-blue-800">
                   {route.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-ink/65">{route.body}</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink/65">
+                  {route.body}
+                </p>
               </div>
             ))}
           </div>
@@ -345,7 +381,9 @@ export default function AboutPage() {
           <div className="reveal mt-14 grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
             <div>
               <p className="eyebrow">What partners get</p>
-              <h3 className="h2 mt-5 text-blue-900">Clear terms, open books.</h3>
+              <h3 className="h2 mt-5 text-blue-900">
+                Clear terms, open books.
+              </h3>
             </div>
             <ul className="space-y-5">
               {partnerCommitments.map((item) => (
@@ -373,8 +411,8 @@ export default function AboutPage() {
                 Work with us
               </p>
               <p className="mt-3 font-display text-[1.35rem] leading-snug">
-                Tell us the district and the goal, and we will tell you honestly whether we are the
-                right partner.
+                Tell us the district and the goal, and we will tell you honestly
+                whether we are the right partner.
               </p>
               <p className="mt-3 text-sm leading-relaxed text-white/70 wrap-any">
                 Partnership enquiries:{" "}
@@ -412,15 +450,18 @@ export default function AboutPage() {
             />
             <div className="relative max-w-2xl">
               <p className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">
-                <span aria-hidden="true" className="block h-[2px] w-6 bg-gold-400" />
+                <span
+                  aria-hidden="true"
+                  className="block h-[2px] w-6 bg-gold-400"
+                />
                 Governance
               </p>
               <h2 className="font-display text-[1.7rem] leading-[1.14] sm:text-[2.15rem]">
                 Meet the people accountable for this work.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-white/70">
-                The Foundation is governed by a board and run by national and regional executives
-                across our three offices.
+                The Foundation is governed by a board and run by national and
+                regional executives across our three offices.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href="/leadership" className="btn-gold">

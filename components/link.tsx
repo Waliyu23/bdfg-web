@@ -17,6 +17,12 @@ type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
  * the `out/` folder is served from. Swap this back to `next/link` if the site
  * is ever hosted at a domain root and client-side transitions are wanted.
  */
-export default function Link({ href, prefetch, scroll, replace, ...rest }: LinkProps) {
+export default function Link({
+  href,
+  prefetch,
+  scroll,
+  replace,
+  ...rest
+}: LinkProps) {
   return <a href={href} {...rest} />;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Photo from "@/components/photo";
 import Link from "@/components/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -23,7 +23,8 @@ const slides: Slide[] = [
     eyebrow: "Non-political · Non-profit · Since 2001",
     title: (
       <>
-        Better lives, built <span className="text-blue-600">with</span> communities.
+        Better lives, built <span className="text-blue-600">with</span>{" "}
+        communities.
       </>
     ),
     body: "Better Dream Foundation Ghana expands access to social services and promotes sustainable development for marginalised communities — empowering women, youth, persons with disabilities and underserved districts through practical programmes, advocacy and strategic partnerships.",
@@ -39,11 +40,15 @@ const slides: Slide[] = [
     eyebrow: "Education · Daboya · Tamale",
     title: (
       <>
-        Every child <span className="text-blue-600">enrolled</span>, and learning well.
+        Every child <span className="text-blue-600">enrolled</span>, and
+        learning well.
       </>
     ),
     body: "We work with schools, districts and parents to remove the practical barriers that push children out of the classroom — school kits, girls education clubs, retention follow-up and stronger parent-teacher structures in deprived districts.",
-    primary: { href: "/focus-areas/education", label: "See our education work" },
+    primary: {
+      href: "/focus-areas/education",
+      label: "See our education work",
+    },
     secondary: { href: "/get-involved", label: "Volunteer with us" },
     image: "/images/focus-education.webp",
     imageAlt:
@@ -55,14 +60,19 @@ const slides: Slide[] = [
     eyebrow: "Women & Youth Empowerment",
     title: (
       <>
-        Skills, capital and <span className="text-blue-600">confidence</span> for women and youth.
+        Skills, capital and <span className="text-blue-600">confidence</span>{" "}
+        for women and youth.
       </>
     ),
     body: "Savings and loan groups, vocational and digital skills, and mentoring that help women and young people earn a living with dignity in the districts where they already live.",
-    primary: { href: "/focus-areas/women-youth-empowerment", label: "See the programme" },
+    primary: {
+      href: "/focus-areas/women-youth-empowerment",
+      label: "See the programme",
+    },
     secondary: { href: "/donate", label: "Fund a savings group" },
     image: "/images/focus-women.webp",
-    imageAlt: "Women seated in a circle during a savings group meeting under a tree",
+    imageAlt:
+      "Women seated in a circle during a savings group meeting under a tree",
     quote: "Village savings and loan groups",
     quoteMeta: "Women & Youth Empowerment programme",
   },
@@ -132,13 +142,54 @@ export default function HeroCarousel() {
                   <div className="grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[1.02fr_1fr] lg:gap-16 lg:py-24">
                     <div
                       className={`transition-all duration-700 ease-out ${
-                        isActive ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                        isActive
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-4 opacity-0"
                       }`}
                     >
-                      <p className="eyebrow">{slide.eyebrow}</p>
-                      <h1 className="h1 mt-6 max-w-[19ch] text-blue-900">{slide.title}</h1>
-                      <p className="lede mt-6 max-w-xl">{slide.body}</p>
-                      <div className="mt-9 flex flex-wrap gap-3">
+                      <p className={`eyebrow ${index === 0 ? "rise-in" : ""}`}>
+                        {slide.eyebrow}
+                      </p>
+                      <h1
+                        className={`h1 mt-6 max-w-[19ch] text-blue-900 ${
+                          index === 0 ? "rise-in" : ""
+                        }`}
+                        style={
+                          index === 0
+                            ? ({
+                                "--rise-delay": "90ms",
+                              } as React.CSSProperties)
+                            : undefined
+                        }
+                      >
+                        {slide.title}
+                      </h1>
+                      <p
+                        className={`lede mt-6 max-w-xl ${
+                          index === 0 ? "rise-in" : ""
+                        }`}
+                        style={
+                          index === 0
+                            ? ({
+                                "--rise-delay": "180ms",
+                              } as React.CSSProperties)
+                            : undefined
+                        }
+                      >
+                        {slide.body}
+                      </p>
+                      <div
+                        className={`mt-9 flex flex-wrap gap-3 ${
+                          index === 0 ? "rise-in" : ""
+                        }`}
+                        style={
+                          index === 0
+                            ? ({
+                                "--rise-delay": "260ms",
+                              } as React.CSSProperties)
+                            : undefined
+                        }
+                      >
                         <Link
                           href={slide.primary.href}
                           className="btn-primary"
@@ -154,13 +205,26 @@ export default function HeroCarousel() {
                           {slide.secondary.label}
                         </Link>
                       </div>
-                      <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-8">
+                      <dl
+                        className={`mt-12 grid max-w-lg grid-cols-3 gap-6 border-t border-line pt-8 ${
+                          index === 0 ? "rise-in" : ""
+                        }`}
+                        style={
+                          index === 0
+                            ? ({
+                                "--rise-delay": "340ms",
+                              } as React.CSSProperties)
+                            : undefined
+                        }
+                      >
                         {stats.map((stat) => (
                           <div key={stat.label}>
                             <dt className="font-display text-[1.75rem] leading-none text-blue-700">
                               {stat.value}
                             </dt>
-                            <dd className="mt-2 text-xs leading-snug text-ink/55">{stat.label}</dd>
+                            <dd className="mt-2 text-xs leading-snug text-ink/55">
+                              {stat.label}
+                            </dd>
                           </div>
                         ))}
                       </dl>
@@ -168,7 +232,7 @@ export default function HeroCarousel() {
 
                     <div className="relative">
                       <div className="relative overflow-hidden rounded-xl2 shadow-lift">
-                        <Image
+                        <Photo
                           src={slide.image}
                           alt={slide.imageAlt}
                           width={1600}
@@ -182,13 +246,17 @@ export default function HeroCarousel() {
                       </div>
                       <div
                         className={`absolute -bottom-6 left-4 right-4 rounded-xl2 border border-line bg-white/95 p-5 shadow-card backdrop-blur transition-all duration-700 ease-out sm:left-8 sm:right-auto sm:max-w-[300px] sm:p-6 ${
-                          isActive ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+                          isActive
+                            ? "translate-y-0 opacity-100"
+                            : "translate-y-3 opacity-0"
                         }`}
                       >
                         <p className="font-display text-base leading-snug text-blue-800">
                           &ldquo;{slide.quote}&rdquo;
                         </p>
-                        <p className="mt-2 text-xs text-ink/55">{slide.quoteMeta}</p>
+                        <p className="mt-2 text-xs text-ink/55">
+                          {slide.quoteMeta}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -206,8 +274,19 @@ export default function HeroCarousel() {
               aria-label="Previous slide"
               className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-blue-700 transition-colors duration-200 hover:border-blue-600 hover:text-blue-900"
             >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.1" aria-hidden="true">
-                <path d="M15 5.5L8.5 12 15 18.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.1"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 5.5L8.5 12 15 18.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </button>
             <button
@@ -216,13 +295,28 @@ export default function HeroCarousel() {
               aria-label="Next slide"
               className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-blue-700 transition-colors duration-200 hover:border-blue-600 hover:text-blue-900"
             >
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.1" aria-hidden="true">
-                <path d="M9 5.5L15.5 12 9 18.5" strokeLinecap="round" strokeLinejoin="round" />
+              <svg
+                viewBox="0 0 24 24"
+                className="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.1"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 5.5L15.5 12 9 18.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </button>
           </div>
 
-          <div className="flex items-center gap-2" role="tablist" aria-label="Choose slide">
+          <div
+            className="flex items-center gap-2"
+            role="tablist"
+            aria-label="Choose slide"
+          >
             {slides.map((slide, index) => (
               <button
                 key={slide.eyebrow}
@@ -232,14 +326,17 @@ export default function HeroCarousel() {
                 aria-label={slide.eyebrow}
                 onClick={() => goTo(index)}
                 className={`h-[3px] rounded-full transition-all duration-300 ${
-                  index === active ? "w-10 bg-blue-700" : "w-5 bg-ink/20 hover:bg-ink/40"
+                  index === active
+                    ? "w-10 bg-blue-700"
+                    : "w-5 bg-ink/20 hover:bg-ink/40"
                 }`}
               />
             ))}
           </div>
 
           <span className="ml-auto hidden text-xs font-semibold uppercase tracking-[0.16em] text-ink/40 sm:block lg:text-white/50">
-            {String(active + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+            {String(active + 1).padStart(2, "0")} /{" "}
+            {String(slides.length).padStart(2, "0")}
           </span>
         </div>
       </div>

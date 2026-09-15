@@ -105,3 +105,35 @@ Two consequences worth knowing:
   wanted (that requires dropping `output: "export"` or hosting the handler separately).
 - Images are unoptimized because the build is a static export; they are pre-sized WebP assets.
 - Partner marks and the donation account details are placeholders, as in the original site.
+
+## Performance and motion
+
+Measured on the exported build (`npm run build`, served locally, homepage, cold cache):
+
+| | Desktop 1440px | Mobile 390px |
+| --- | --- | --- |
+| Before | 3359 KB, 24 requests, 7 third-party | 2591 KB, 21 requests, 7 third-party |
+| After | 1058 KB, 22 requests, 0 third-party | 836 KB, 18 requests, 0 third-party |
+
+What changed:
+
+- **Self-hosted fonts.** General Sans (400/500/600) and Fraunces are served from
+  `public/fonts` as `woff2` with `font-display: swap` and `unicode-range` splits.
+  No Google Fonts requests, so no third-party connections on any page.
+- **Responsive images.** `node scripts/images.mjs` (sharp) generates 480/768/1200/1536
+  `webp` variants for every photo plus 64/128/256 crest logos. `components/photo.tsx`
+  emits `srcset`/`sizes` with intrinsic `width`/`height` so layout never shifts, and
+  only the first hero image gets `fetchPriority="high"`; everything else is lazy.
+- **Preloads.** The hero image and the three body-font files are preloaded in
+  `app/layout.tsx` / `app/page.tsx`.
+- **Motion.** `components/reveal-on-scroll.tsx` uses a single `IntersectionObserver`
+  with sibling-index stagger; `.reveal` / `.reveal-left` / `.reveal-right` /
+  `.reveal-scale` utilities in `app/globals.css` handle the transforms. The hero
+  headline, lede and buttons rise in on load, the header carries a scroll-progress
+  bar, and the footprint figures count up when scrolled into view.
+- **Reduced motion.** Every animation, the smooth scroll and the carousel transition
+  are disabled under `prefers-reduced-motion: reduce`.
+- **UX polish.** Visible `:focus-visible` rings sitewide, a gallery lightbox with
+  arrow-key and Escape support, field-level validation on both forms, button hover
+  lift and arrow nudge, and `overflow-x: clip` on sections so reveal transforms can
+  never create a sideways scrollbar.

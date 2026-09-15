@@ -35,7 +35,9 @@ export const metadata: Metadata = {
       { url: "/favicon.png", type: "image/png", sizes: "64x64" },
       { url: "/favicon.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
@@ -43,20 +45,31 @@ export const viewport: Viewport = {
   themeColor: "#12409B",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en-GH">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
-          rel="stylesheet"
-        />
+        {/* Fonts are self-hosted (see globals.css) — no third-party stylesheet
+            to fetch before text can render. Only the faces used above the fold
+            are preloaded. */}
+        {[
+          "/fonts/general-sans-400.woff2",
+          "/fonts/general-sans-600.woff2",
+          "/fonts/fraunces-var-latin.woff2",
+        ].map((href) => (
+          <link
+            key={href}
+            rel="preload"
+            href={href}
+            as="font"
+            type="font/woff2"
+            crossOrigin="anonymous"
+          />
+        ))}
       </head>
       <body className="flex min-h-screen flex-col">
         <a

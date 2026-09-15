@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Photo from "@/components/photo";
 import Link from "@/components/link";
 import { notFound } from "next/navigation";
 
@@ -37,7 +37,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function NewsArticlePage({ params }: { params: Promise<Params> }) {
+export default async function NewsArticlePage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
   const { slug } = await params;
   const item = getNewsItem(slug);
   if (!item) notFound();
@@ -70,11 +74,11 @@ export default async function NewsArticlePage({ params }: { params: Promise<Para
       <section className="pt-12 sm:pt-16">
         <div className="shell">
           <figure className="reveal overflow-hidden rounded-xl2 shadow-card">
-            <Image
+            <Photo
               src={item.image}
               alt={item.imageAlt}
-              width={1600}
-              height={1200}
+              width={1536}
+              height={1024}
               priority
               sizes="(max-width: 1200px) 100vw, 1140px"
               className="h-[240px] w-full object-cover sm:h-[400px] lg:h-[460px]"
@@ -121,10 +125,15 @@ export default async function NewsArticlePage({ params }: { params: Promise<Para
           </aside>
 
           <div className="reveal max-w-prose">
-            <p className="font-display text-[1.25rem] leading-[1.5] text-blue-800">{item.lede}</p>
+            <p className="font-display text-[1.25rem] leading-[1.5] text-blue-800">
+              {item.lede}
+            </p>
             <div className="mt-8 space-y-5">
               {item.paragraphs.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)} className="text-base leading-[1.8] text-ink/80">
+                <p
+                  key={paragraph.slice(0, 40)}
+                  className="text-base leading-[1.8] text-ink/80"
+                >
                   {paragraph}
                 </p>
               ))}

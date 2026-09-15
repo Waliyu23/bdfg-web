@@ -19,7 +19,14 @@ export default function Watermark() {
           patternTransform="rotate(-24)"
         >
           <g transform="translate(18 34)">
-            <image href={site.logo} x="0" y="0" width="52" height="52" preserveAspectRatio="xMidYMid meet" />
+            <image
+              href={site.logoSmall}
+              x="0"
+              y="0"
+              width="52"
+              height="52"
+              preserveAspectRatio="xMidYMid meet"
+            />
             <text
               x="66"
               y="24"
@@ -45,7 +52,12 @@ export default function Watermark() {
           </g>
         </pattern>
       </defs>
-      <rect width="100%" height="100%" fill="url(#bdfg-watermark)" opacity="0.05" />
+      <rect
+        width="100%"
+        height="100%"
+        fill="url(#bdfg-watermark)"
+        opacity="0.05"
+      />
     </svg>
   );
 }

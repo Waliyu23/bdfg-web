@@ -30,6 +30,15 @@ export default function ContactForm({
 }: ContactFormProps) {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  /** Names of required fields left empty on the last submit attempt. */
+  const [invalid, setInvalid] = useState<string[]>([]);
+
+  const fieldClass = (name: string) =>
+    `field ${invalid.includes(name) ? "field-invalid" : ""}`;
+
+  /** Clear a field's error state as soon as the visitor starts fixing it. */
+  const clearInvalid = (name: string) =>
+    setInvalid((current) => current.filter((item) => item !== name));
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -40,11 +49,25 @@ export default function ContactForm({
     const email = value("email");
     const message = value("message");
 
-    if (!name || !email || !message) {
-      setError("Please fill in your name, email and message so we can respond properly.");
+    const missing = [
+      !name && "name",
+      !email && "email",
+      !message && "message",
+    ].filter(Boolean) as string[];
+
+    if (missing.length > 0) {
+      setInvalid(missing);
+      setError(
+        "Please fill in your name, email and message so we can respond properly.",
+      );
+      // Move the cursor straight to the first field that needs attention.
+      event.currentTarget
+        .querySelector<HTMLElement>(`[name="${missing[0]}"]`)
+        ?.focus();
       return;
     }
     setError("");
+    setInvalid([]);
 
     const lines = [
       `Name: ${name}`,
@@ -72,7 +95,11 @@ export default function ContactForm({
 
   if (sent) {
     return (
-      <div className="card p-8 text-center" role="status" aria-live="polite">
+      <div
+        className="card rise-in p-8 text-center"
+        role="status"
+        aria-live="polite"
+      >
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-blue-600">
           <svg
             viewBox="0 0 24 24"
@@ -82,13 +109,17 @@ export default function ContactForm({
             strokeWidth="2"
             aria-hidden="true"
           >
-            <path d="M4 12.5l5 5L20 6.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M4 12.5l5 5L20 6.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </div>
         <h2 className="mt-5 font-display text-2xl">Thank you</h2>
         <p className="mx-auto mt-3 max-w-md text-base leading-relaxed text-ink/70">
-          Your email client should now be open with your message ready to send. If nothing opened,
-          write to us directly at{" "}
+          Your email client should now be open with your message ready to send.
+          If nothing opened, write to us directly at{" "}
           <a
             className="font-semibold text-blue-700 underline decoration-gold-500 decoration-2 underline-offset-2"
             href={`mailto:${site.email}`}
@@ -97,7 +128,11 @@ export default function ContactForm({
           </a>
           .
         </p>
-        <button type="button" onClick={() => setSent(false)} className="btn-ghost mt-7">
+        <button
+          type="button"
+          onClick={() => setSent(false)}
+          className="btn-ghost mt-7"
+        >
           Submit another response
         </button>
       </div>
@@ -114,7 +149,12 @@ export default function ContactForm({
           <input
             id="name"
             name="name"
-            className="field"
+            required
+            aria-required="true"
+            aria-invalid={invalid.includes("name") || undefined}
+            aria-describedby={error ? "form-error" : undefined}
+            onInput={() => clearInvalid("name")}
+            className={fieldClass("name")}
             placeholder="Your full name"
             autoComplete="name"
           />
@@ -126,8 +166,13 @@ export default function ContactForm({
           <input
             id="email"
             name="email"
+            required
+            aria-required="true"
+            aria-invalid={invalid.includes("email") || undefined}
+            aria-describedby={error ? "form-error" : undefined}
+            onInput={() => clearInvalid("email")}
             type="email"
-            className="field"
+            className={fieldClass("email")}
             placeholder="you@example.com"
             autoComplete="email"
           />
@@ -148,7 +193,12 @@ export default function ContactForm({
           <label className="label" htmlFor="location">
             Where are you based?
           </label>
-          <input id="location" name="location" className="field" placeholder="City, country" />
+          <input
+            id="location"
+            name="location"
+            className="field"
+            placeholder="City, country"
+          />
         </div>
 
         {variant === "volunteer" ? (
@@ -157,7 +207,12 @@ export default function ContactForm({
               <label className="label" htmlFor="interest">
                 How would you like to help?
               </label>
-              <select id="interest" name="interest" className="field" defaultValue={interests[0]}>
+              <select
+                id="interest"
+                name="interest"
+                className="field"
+                defaultValue={interests[0]}
+              >
                 {interests.map((interest) => (
                   <option key={interest}>{interest}</option>
                 ))}
@@ -196,8 +251,13 @@ export default function ContactForm({
           <textarea
             id="message"
             name="message"
+            required
+            aria-required="true"
+            aria-invalid={invalid.includes("message") || undefined}
+            aria-describedby={error ? "form-error" : undefined}
+            onInput={() => clearInvalid("message")}
             rows={5}
-            className="field resize-y"
+            className={`${fieldClass("message")} resize-y`}
             placeholder="Tell us a little about yourself, your skills and what you would like to do with us."
           />
         </div>
@@ -205,8 +265,9 @@ export default function ContactForm({
 
       {error && (
         <p
+          id="form-error"
           role="alert"
-          className="mt-5 rounded-xl bg-gold-200/60 px-4 py-3 text-sm font-medium text-blue-900"
+          className="rise-in mt-5 rounded-xl bg-gold-200/60 px-4 py-3 text-sm font-medium text-blue-900"
         >
           {error}
         </p>
@@ -217,8 +278,8 @@ export default function ContactForm({
           Send message
         </button>
         <p className="text-xs leading-relaxed text-ink/50">
-          Your details go straight to the secretariat by email. We never share them with third
-          parties.
+          Your details go straight to the secretariat by email. We never share
+          them with third parties.
         </p>
       </div>
     </form>

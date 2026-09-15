@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Photo from "@/components/photo";
 import Link from "@/components/link";
 
 import ArrowRight from "@/components/arrow-right";
@@ -33,11 +33,11 @@ export default function FocusAreasPage() {
               }`}
             >
               <figure className="overflow-hidden rounded-xl2 shadow-card">
-                <Image
+                <Photo
                   src={area.image}
                   alt={area.imageAlt}
-                  width={1600}
-                  height={1200}
+                  width={1536}
+                  height={1024}
                   sizes="(max-width: 1024px) 100vw, 48vw"
                   className="h-[260px] w-full object-cover sm:h-[380px]"
                 />
@@ -47,10 +47,15 @@ export default function FocusAreasPage() {
                   Focus area {String(index + 1).padStart(2, "0")}
                 </p>
                 <h2 className="h2 mt-4 text-blue-900">{area.title}</h2>
-                <p className="mt-5 text-base leading-[1.75] text-ink/75">{area.intro}</p>
+                <p className="mt-5 text-base leading-[1.75] text-ink/75">
+                  {area.intro}
+                </p>
                 <ul className="mt-7 space-y-2.5">
                   {area.pillars.slice(0, 3).map((pillar) => (
-                    <li key={pillar.title} className="flex gap-3 text-sm text-ink/70">
+                    <li
+                      key={pillar.title}
+                      className="flex gap-3 text-sm text-ink/70"
+                    >
                       <span
                         aria-hidden="true"
                         className="mt-2 block h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400"
@@ -59,7 +64,10 @@ export default function FocusAreasPage() {
                     </li>
                   ))}
                 </ul>
-                <Link href={`/focus-areas/${area.slug}`} className="btn-primary mt-8">
+                <Link
+                  href={`/focus-areas/${area.slug}`}
+                  className="btn-primary mt-8"
+                >
                   Explore {area.title}
                   <ArrowRight />
                 </Link>
