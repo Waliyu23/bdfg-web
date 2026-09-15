@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import Link from "@/components/link";
 
 import CheckIcon from "@/components/check-icon";
 import EmailLink from "@/components/email-link";

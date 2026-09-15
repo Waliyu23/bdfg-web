@@ -82,6 +82,22 @@ Tailwind theme extensions in `tailwind.config.ts`:
   `.btn-primary`, `.btn-gold`, `.btn-ghost`, `.btn-onblue`, `.card`, `.field`, `.kente`,
   `.marquee`, `.link-underline`, `.reveal`
 
+## Static export and hosting
+
+`npm run build` runs `next build` and then `node scripts/relativize.mjs`, which rewrites the
+root-absolute URLs Next emits (`/_next/...`, `/images/...`, `/about/`) into document-relative ones.
+That makes `out/` hostable from a domain root *or* any sub-path (preview proxy, GitHub Pages project
+site, CDN folder).
+
+Two consequences worth knowing:
+
+- `components/link.tsx` is a plain-anchor stand-in for `next/link`. The client router navigates to
+  absolute route paths, which 404 under a sub-path, so links are native anchors and each page load
+  is a fresh document. If the site is hosted at a domain root and you want client-side transitions,
+  change that file back to a `next/link` re-export.
+- A couple of image `preload` hints in the hydration payload still point at `/images/...`; they fail
+  silently and the rendered images are unaffected. Hosting at a domain root removes them.
+
 ## Notes
 
 - The enquiry form composes a pre-filled `mailto:` message — no backend or API keys required. Swap
