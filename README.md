@@ -137,3 +137,13 @@ What changed:
   arrow-key and Escape support, field-level validation on both forms, button hover
   lift and arrow nudge, and `overflow-x: clip` on sections so reveal transforms can
   never create a sideways scrollbar.
+
+## Focus-area ticker
+
+`components/focus-ticker.tsx` renders a full-bleed navy band directly under the hero
+with the five focus areas set in large Fraunces display type, scrolling continuously.
+The list is duplicated for a seamless loop (the second copy is `aria-hidden` and
+`tabIndex={-1}`), each title links to its `/focus-areas/<slug>/` page, hovering or
+keyboard focus pauses the animation, and under `prefers-reduced-motion: reduce` the
+duplicate is hidden and the row becomes a horizontally scrollable, snap-aligned list.
+Styles live in the `.ticker*` block in `app/globals.css`.

@@ -4,6 +4,7 @@ import Link from "@/components/link";
 
 import ArrowRight from "@/components/arrow-right";
 import CtaBand from "@/components/cta-band";
+import FocusTicker from "@/components/focus-ticker";
 import HeroCarousel from "@/components/hero-carousel";
 import NewsCard from "@/components/news-card";
 import { focusAreas } from "@/lib/focus-areas";
@@ -89,6 +90,7 @@ export default function HomePage() {
         fetchPriority="high"
       />
       <HeroCarousel />
+      <FocusTicker />
 
       {/* Who we are */}
       <section className="section">

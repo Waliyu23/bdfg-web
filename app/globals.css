@@ -260,6 +260,85 @@
     }
   }
 
+  /* ------------------------------------------------------------------
+     Focus-area ticker (full-bleed band under the hero)
+     ------------------------------------------------------------------ */
+  .ticker {
+    position: relative;
+    overflow: hidden;
+    --ticker-fade: 64px;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 var(--ticker-fade),
+      #000 calc(100% - var(--ticker-fade)),
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 var(--ticker-fade),
+      #000 calc(100% - var(--ticker-fade)),
+      transparent
+    );
+  }
+
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    align-items: center;
+    animation: marquee-scroll 42s linear infinite;
+    will-change: transform;
+  }
+
+  .ticker:hover .ticker-track,
+  .ticker:focus-within .ticker-track {
+    animation-play-state: paused;
+  }
+
+  .ticker-item {
+    @apply flex items-baseline gap-3 px-6 sm:gap-4 sm:px-8;
+  }
+
+  .ticker-index {
+    @apply font-sans text-[0.625rem] font-semibold tracking-[0.18em] text-gold-400/70 sm:text-xs;
+  }
+
+  .ticker-label {
+    @apply whitespace-nowrap font-display text-[2rem] leading-none text-white/90 transition-colors duration-300 sm:text-[2.75rem] lg:text-[3.5rem];
+  }
+
+  .ticker-item:hover .ticker-label,
+  .ticker-item:focus-visible .ticker-label {
+    @apply text-gold-300;
+  }
+
+  .ticker-sep {
+    @apply text-gold-400/50;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker {
+      /* No looping: show one copy of the list and let the visitor scroll it. */
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
+    .ticker-track {
+      animation: none;
+    }
+
+    .ticker-track > li[aria-hidden="true"] {
+      display: none;
+    }
+
+    .ticker-item {
+      scroll-snap-align: center;
+    }
+  }
+
   .link-underline {
     @apply relative inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700;
   }
