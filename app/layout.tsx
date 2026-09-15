@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
+import FloatingActions from "@/components/floating-actions";
 import RevealOnScroll from "@/components/reveal-on-scroll";
 import SiteFooter from "@/components/site-footer";
 import SiteHeader from "@/components/site-header";
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
+        <FloatingActions />
         <RevealOnScroll />
       </body>
     </html>

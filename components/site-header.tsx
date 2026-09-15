@@ -29,15 +29,13 @@ export default function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-50 border-b bg-paper/90 backdrop-blur-md transition-shadow duration-300 ${
-        scrolled ? "border-line shadow-card" : "border-transparent"
+        scrolled
+          ? "border-line shadow-[0_10px_30px_-24px_rgba(10,23,51,.5)]"
+          : "border-transparent"
       }`}
     >
       <div className="shell-wide flex h-[76px] items-center justify-between gap-4">
-        <Link
-          href="/"
-          aria-label={`${site.name} home`}
-          className="shrink-0"
-        >
+        <Link href="/" aria-label={`${site.name} home`} className="shrink-0">
           <span className="flex items-center gap-3">
             <span className="block h-14 w-14 shrink-0">
               <Image
@@ -94,7 +92,13 @@ export default function SiteHeader() {
           aria-label={open ? "Close menu" : "Open menu"}
           className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-blue-700 lg:hidden"
         >
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            viewBox="0 0 24 24"
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             {open ? (
               <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" />
             ) : (
@@ -104,17 +108,23 @@ export default function SiteHeader() {
         </button>
       </div>
 
-      <div id="mobile-nav" hidden={!open} className="border-t border-line bg-paper lg:hidden">
+      <div
+        id="mobile-nav"
+        hidden={!open}
+        className="border-t border-line bg-paper lg:hidden"
+      >
         <nav aria-label="Mobile" className="shell flex flex-col py-4">
-          {[...primaryNav, { href: "/contact", label: "Contact" }].map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="border-b border-line/70 py-3.5 text-base font-medium text-ink/80"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {[...primaryNav, { href: "/contact", label: "Contact" }].map(
+            (link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="border-b border-line/70 py-3.5 text-base font-medium text-ink/80"
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
           <Link href="/donate" className="btn-gold mt-5 w-full">
             Donate
           </Link>
