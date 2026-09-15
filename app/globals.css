@@ -24,7 +24,14 @@
 
 @layer components {
   /* Layout containers */
-  .shell {
+    /* Grid/flex children must be allowed to shrink so long words (emails, URLs)
+     cannot widen a track past the viewport on narrow screens. */
+  .shell > *,
+  .shell-wide > * {
+    min-width: 0;
+  }
+
+.shell {
     @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8;
   }
 
@@ -206,5 +213,13 @@
       transform: none;
       transition: none;
     }
+  }
+}
+
+@layer utilities {
+  /* Long addresses and URLs must break rather than widen their grid track. */
+  .wrap-any,
+  a[href^="mailto:"] {
+    overflow-wrap: anywhere;
   }
 }

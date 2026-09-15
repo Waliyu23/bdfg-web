@@ -4,6 +4,8 @@ import { focusAreas } from "@/lib/focus-areas";
 import { news } from "@/lib/news";
 import { site } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 const staticRoutes = [
   "",
   "/about",

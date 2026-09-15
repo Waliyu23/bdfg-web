@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import SocialIcon from "@/components/social-icon";
+import EmailLink from "@/components/email-link";
 import { focusAreas } from "@/lib/focus-areas";
 import { exploreNav, site, socials } from "@/lib/site";
 
@@ -76,9 +77,7 @@ export default function SiteFooter() {
           </h2>
           <ul className="mt-4 space-y-4 text-sm text-white/80">
             <li>
-              <a href={`mailto:${site.email}`} className="break-words hover:text-gold-300">
-                {site.email}
-              </a>
+              <EmailLink className="wrap-any hover:text-gold-300" />
             </li>
             <li>
               <a href={site.phoneHref} className="hover:text-gold-300">

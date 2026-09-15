@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import CheckIcon from "@/components/check-icon";
+import EmailLink from "@/components/email-link";
 import PageHero from "@/components/page-hero";
 import { site } from "@/lib/site";
 
@@ -233,12 +234,7 @@ export default function DonatePage() {
               <div>
                 <dt className="text-xs uppercase tracking-[0.12em] text-white/45">Email</dt>
                 <dd className="mt-1">
-                  <a
-                    className="break-words font-semibold text-gold-300"
-                    href={`mailto:${site.email}`}
-                  >
-                    {site.email}
-                  </a>
+                  <EmailLink className="wrap-any font-semibold text-gold-300" />
                 </dd>
               </div>
               <div>

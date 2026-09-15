@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import ContactForm from "@/components/contact-form";
+import EmailLink from "@/components/email-link";
 import PageHero from "@/components/page-hero";
 import { officeLocations, officeMapUrl, site } from "@/lib/site";
 
@@ -39,12 +40,7 @@ export default function ContactPage() {
         <div className="shell grid gap-6 md:grid-cols-3">
           <div className="reveal card flex flex-col p-7">
             <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-ink/45">Email</h2>
-            <a
-              href={`mailto:${site.email}`}
-              className="mt-3 break-words font-display text-lg text-blue-700 underline decoration-gold-500 decoration-2 underline-offset-4"
-            >
-              {site.email}
-            </a>
+            <EmailLink className="mt-3 wrap-any font-display text-lg text-blue-700 underline decoration-gold-500 decoration-2 underline-offset-4" />
             <p className="mt-4 text-sm leading-relaxed text-ink/60">
               The fastest way to reach the secretariat. We aim to reply within five working days.
             </p>
@@ -55,7 +51,7 @@ export default function ContactPage() {
             </h2>
             <a
               href={site.phoneHref}
-              className="mt-3 break-words font-display text-lg text-blue-700 underline decoration-gold-500 decoration-2 underline-offset-4"
+              className="mt-3 wrap-any font-display text-lg text-blue-700 underline decoration-gold-500 decoration-2 underline-offset-4"
             >
               {site.phone}
             </a>
