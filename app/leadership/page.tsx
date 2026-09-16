@@ -43,18 +43,73 @@ function Crest() {
   );
 }
 
-function RoleCard({ role }: { role: LeadershipRole }) {
+/**
+ * Profile card: portrait on top, then name, position, email and bio.
+ * Until the secretariat supplies portraits and names, the image area shows the
+ * crest on a tinted panel and the name line reads as "to be confirmed".
+ */
+function ProfileCard({ role }: { role: LeadershipRole }) {
+  const email = role.email ?? site.email;
+
   return (
-    <article className="reveal flex gap-5 rounded-xl2 border border-line bg-white p-6 shadow-card">
-      <Crest />
-      <div>
-        <h3 className="font-display text-lg leading-snug text-blue-800">
-          {role.title}
+    <article className="reveal flex flex-col overflow-hidden rounded-xl2 border border-line bg-white shadow-card">
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-blue-50">
+        {role.photo ? (
+          <img
+            src={role.photo}
+            alt={role.name ? `${role.name}, ${role.title}` : role.title}
+            width={800}
+            height={1000}
+            loading="lazy"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100"
+          >
+            <img
+              src={site.logo}
+              alt=""
+              width={128}
+              height={128}
+              loading="lazy"
+              decoding="async"
+              className="h-20 w-20 opacity-25"
+            />
+          </span>
+        )}
+      </div>
+
+      <div className="flex flex-1 flex-col p-6">
+        <h3 className="font-display text-xl leading-snug text-blue-900">
+          {role.name ?? "Name to be confirmed"}
         </h3>
-        <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-gold-600">
+        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-gold-600">
+          {role.title}
+        </p>
+        <a
+          href={`mailto:${email}`}
+          className="mt-3 inline-flex w-fit max-w-full items-center gap-2 break-all text-[0.8125rem] font-medium leading-snug text-blue-700 underline decoration-gold-500 decoration-2 underline-offset-2 transition-colors duration-200 hover:text-blue-900"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            className="h-4 w-4 shrink-0"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.8"
+            aria-hidden="true"
+          >
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="m3.5 6.5 8.5 6 8.5-6" strokeLinecap="round" />
+          </svg>
+          {email}
+        </a>
+        <p className="mt-4 text-sm leading-relaxed text-ink/65">{role.body}</p>
+        <p className="mt-4 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink/40">
           {role.group}
         </p>
-        <p className="mt-3 text-sm leading-relaxed text-ink/65">{role.body}</p>
       </div>
     </article>
   );
@@ -149,41 +204,50 @@ export default function LeadershipPage() {
       </section>
 
       {/* Board of Directors */}
-      <section id="board" className="section scroll-mt-28">
+      <section id="board" className="section scroll-mt-28 bg-gold-400">
         <div className="shell">
           <div className="reveal max-w-2xl">
             <p className="eyebrow">Tier one</p>
             <h2 className="h2 mt-5 text-blue-900">Board of Directors</h2>
-            <p className="lede mt-5">
+            <p className="lede mt-5 text-blue-900/80">
               The board is non-executive. It approves strategy and budgets,
               appoints the Executive Director, and protects the non-political,
               non-profit mandate in our incorporation documents.
             </p>
           </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {boardRoles.map((role) => (
-              <RoleCard key={role.title} role={role} />
+              <ProfileCard key={role.title} role={role} />
             ))}
           </div>
         </div>
       </section>
 
       {/* National Executives */}
-      <section id="national" className="section scroll-mt-28 bg-blue-50">
+      <section
+        id="national"
+        className="section scroll-mt-28 bg-blue-900 text-white"
+      >
         <div className="shell">
           <div className="reveal max-w-2xl">
-            <p className="eyebrow">Tier two</p>
-            <h2 className="h2 mt-5 text-blue-900">National Executives</h2>
-            <p className="lede mt-5">
+            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">
+              <span
+                aria-hidden="true"
+                className="block h-[2px] w-6 bg-gold-400"
+              />
+              Tier two
+            </p>
+            <h2 className="h2 mt-5 text-white">National Executives</h2>
+            <p className="lede mt-5 text-white/70">
               Based at the Accra secretariat. The national team carries
               responsibility for the Foundation as a whole — strategy,
               partnerships, finance, safeguarding and the quality of every
               programme in every region.
             </p>
           </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {nationalRoles.map((role) => (
-              <RoleCard key={role.title} role={role} />
+              <ProfileCard key={role.title} role={role} />
             ))}
           </div>
         </div>

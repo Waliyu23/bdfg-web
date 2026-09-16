@@ -5,6 +5,12 @@ export type LeadershipRole = {
   group: string;
   /** Short description of the responsibilities attached to the role. */
   body: string;
+  /** Person holding the role. Omit until the secretariat confirms the name. */
+  name?: string;
+  /** Direct address for the role. Falls back to the secretariat inbox. */
+  email?: string;
+  /** Portrait path under `public/images`. Omit to show the crest placeholder. */
+  photo?: string;
 };
 
 /** Tier 1 — the governing board. */
