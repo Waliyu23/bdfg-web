@@ -60,45 +60,56 @@ function ProfileCard({
 
   return (
     <article className="reveal flex flex-col items-center text-center">
-      <div
-        className={`relative h-40 w-40 overflow-hidden rounded-full ring-4 sm:h-44 sm:w-44 ${
-          dark ? "bg-blue-800 ring-white/25" : "bg-blue-50 ring-white/70"
-        }`}
+      <Link
+        href={`/leadership/${role.slug}`}
+        className="group flex flex-col items-center"
+        aria-label={`View the ${role.title} profile`}
       >
-        {role.photo ? (
-          <img
-            src={role.photo}
-            alt={role.name ? `${role.name}, ${role.title}` : role.title}
-            width={400}
-            height={400}
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full object-cover"
-          />
-        ) : (
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 flex items-center justify-center"
-          >
+        <div
+          className={`relative h-40 w-40 overflow-hidden rounded-full ring-4 transition-all duration-300 group-hover:ring-gold-400 sm:h-44 sm:w-44 ${
+            dark ? "bg-blue-800 ring-white/25" : "bg-blue-50 ring-white/70"
+          }`}
+        >
+          {role.photo ? (
             <img
-              src={site.logo}
-              alt=""
-              width={128}
-              height={128}
+              src={role.photo}
+              alt={role.name ? `${role.name}, ${role.title}` : role.title}
+              width={400}
+              height={400}
               loading="lazy"
               decoding="async"
-              className={`h-20 w-20 ${dark ? "opacity-40" : "opacity-30"}`}
+              className="h-full w-full object-cover"
             />
-          </span>
-        )}
-      </div>
+          ) : (
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <img
+                src={site.logo}
+                alt=""
+                width={128}
+                height={128}
+                loading="lazy"
+                decoding="async"
+                className={`h-20 w-20 ${dark ? "opacity-40" : "opacity-30"}`}
+              />
+            </span>
+          )}
+        </div>
+      </Link>
 
       <h3
         className={`mt-6 font-display text-xl leading-snug ${
           dark ? "text-white" : "text-blue-900"
         }`}
       >
-        {role.name ?? "Name to be confirmed"}
+        <Link
+          href={`/leadership/${role.slug}`}
+          className="underline-offset-4 transition-colors duration-200 hover:underline"
+        >
+          {role.name ?? "Name to be confirmed"}
+        </Link>
       </h3>
       <p
         className={`mt-2 text-xs font-semibold uppercase tracking-[0.12em] ${
@@ -142,6 +153,17 @@ function ProfileCard({
       >
         {role.group}
       </p>
+      <Link
+        href={`/leadership/${role.slug}`}
+        className={`mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition-colors duration-200 ${
+          dark
+            ? "text-gold-300 hover:text-gold-200"
+            : "text-blue-700 hover:text-blue-900"
+        }`}
+      >
+        View full profile
+        <span aria-hidden="true">→</span>
+      </Link>
     </article>
   );
 }

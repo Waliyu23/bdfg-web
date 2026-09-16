@@ -1,95 +1,13 @@
-export type LeadershipRole = {
-  /** Role title as it appears on the card. */
-  title: string;
-  /** Team, board or duty station the role sits in. */
-  group: string;
-  /** Short description of the responsibilities attached to the role. */
-  body: string;
-  /** Person holding the role. Omit until the secretariat confirms the name. */
-  name?: string;
-  /** Direct address for the role. Falls back to the secretariat inbox. */
-  email?: string;
-  /** Portrait path under `public/images`. Omit to show the crest placeholder. */
-  photo?: string;
-};
-
-/** Tier 1 — the governing board. */
-export const boardRoles: LeadershipRole[] = [
-  {
-    title: "Board Chairperson",
-    group: "Board of Directors",
-    body: "Chairs the governing board, safeguards the mandate of the Foundation and leads board oversight of strategy and risk.",
-  },
-  {
-    title: "Vice Board Chairperson",
-    group: "Board of Directors",
-    body: "Deputises for the chairperson, and leads on board development and the induction of new directors.",
-  },
-  {
-    title: "Board Secretary",
-    group: "Board of Directors",
-    body: "Keeps the records of the Foundation, minutes of the board and statutory filings under the Companies Act.",
-  },
-  {
-    title: "Board Treasurer",
-    group: "Board of Directors",
-    body: "Oversees financial stewardship, approves the annual budget and presents accounts to the board and auditors.",
-  },
-  {
-    title: "Director — Governance & Compliance",
-    group: "Board of Directors",
-    body: "Maintains the constitution, conflict-of-interest register, safeguarding policy and regulatory compliance.",
-  },
-  {
-    title: "Director — Programmes & Impact",
-    group: "Board of Directors",
-    body: "Holds management to account for programme quality, evidence of impact and learning across the focus areas.",
-  },
-];
-
-/** Tier 2 — Accra secretariat. */
-export const nationalRoles: LeadershipRole[] = [
-  {
-    title: "Executive Director",
-    group: "National Secretariat, Accra",
-    body: "Holds overall responsibility for strategy, institutional partnerships and the performance of all programmes.",
-  },
-  {
-    title: "Deputy Executive Director",
-    group: "National Secretariat, Accra",
-    body: "Supports the Executive Director and oversees day-to-day coordination between the national office and the regions.",
-  },
-  {
-    title: "National Secretary",
-    group: "Governance",
-    body: "Convenes the national executive, keeps its records and circulates decisions to the regions and committees.",
-  },
-  {
-    title: "National Treasurer",
-    group: "Finance & Operations",
-    body: "Responsible for financial controls, donor reporting, procurement, audit readiness and staff administration.",
-  },
-  {
-    title: "Director of Programmes",
-    group: "Programmes",
-    body: "Leads design, delivery and evaluation across the five focus areas and line-manages regional coordinators.",
-  },
-  {
-    title: "National Organiser",
-    group: "Mobilisation",
-    body: "Builds the volunteer base, coordinates campaigns and keeps the regional structures active between programmes.",
-  },
-  {
-    title: "Communications & Partnerships Lead",
-    group: "External Relations",
-    body: "Manages the Foundation’s voice, media engagement, donor relations and volunteer recruitment.",
-  },
-  {
-    title: "Monitoring, Evaluation & Learning Lead",
-    group: "MEL",
-    body: "Builds the evidence base — baselines, indicators, field verification and learning reviews.",
-  },
-];
+export type { LeadershipRole } from "@/lib/leadership-roles";
+export {
+  boardRoles,
+  nationalRoles,
+  executiveRoles,
+  tierMeta,
+  getExecutive,
+  getExecutiveNeighbours,
+  getTierPeers,
+} from "@/lib/leadership-roles";
 
 export type RegionalTeam = {
   /** Region name as used in the section heading. */

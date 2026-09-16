@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { focusAreas } from "@/lib/focus-areas";
+import { executiveRoles } from "@/lib/leadership";
 import { news } from "@/lib/news";
 import { site } from "@/lib/site";
 
@@ -34,6 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...executiveRoles.map((role) => ({
+      url: `${site.url}/leadership/${role.slug}/`,
+      lastModified: now,
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
     })),
     ...news.map((item) => ({
       url: `${site.url}/news/${item.slug}/`,
