@@ -360,6 +360,13 @@ export default function AboutPage() {
               </a>{" "}
               and they will replace the defaults exactly as supplied.
             </p>
+            <Link
+              href="/partners"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-blue-700"
+            >
+              See the full partner directory
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

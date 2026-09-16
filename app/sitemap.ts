@@ -12,6 +12,7 @@ const staticRoutes = [
   "/about",
   "/focus-areas",
   "/leadership",
+  "/partners",
   "/news",
   "/gallery",
   "/get-involved",

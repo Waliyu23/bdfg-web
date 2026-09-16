@@ -14,7 +14,7 @@ export default function PartnerMarquee() {
             className="w-[210px] shrink-0 sm:w-[240px]"
           >
             <Link
-              href="/about#partnership"
+              href="/partners"
               tabIndex={index >= partners.length ? -1 : undefined}
               className="flex h-full flex-col items-center gap-4 rounded-xl2 border border-line bg-white px-5 py-7 text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-blue-600/40 hover:shadow-card"
             >

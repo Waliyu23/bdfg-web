@@ -1,7 +1,26 @@
+export type PartnerCategory =
+  "government" | "funding" | "civil-society" | "knowledge";
+
 export type Partner = {
+  /** Anchor id used by the directory filter links. */
+  slug: string;
   name: string;
+  /** Short label describing the kind of partner. */
   role: string;
+  /** Group the partner sits in on the partnership page. */
+  category: PartnerCategory;
+  /** What the partnership delivers in practice. */
+  body: string;
+  /** Where the relationship operates. */
+  scope: string;
+  /** Focus-area slugs the partnership contributes to. */
+  focus: string[];
+  /** Placeholder mark, replaced when a supplied logo is available. */
   icon: React.ReactNode;
+  /** Supplied logo path under `public/images`, when we have one. */
+  logo?: string;
+  /** Public website, when the partner has one. */
+  url?: string;
 };
 
 /** Placeholder partner marks — swap for supplied logos when available. */
@@ -9,6 +28,12 @@ export const partners: Partner[] = [
   {
     name: "District Assembly",
     role: "Local government partner",
+    slug: "district-assembly",
+    category: "government",
+    body: "Joint planning with district assemblies gives every programme a mandate, a district focal person and a place in the district medium-term development plan. Assemblies contribute venues, community entry and co-funding of local activities.",
+    scope:
+      "Districts across Greater Accra, Ashanti, Northern, Savannah and Upper East",
+    focus: ["community-engagement", "education"],
     icon: (
       <svg
         viewBox="0 0 40 40"
@@ -37,6 +62,11 @@ export const partners: Partner[] = [
   {
     name: "Education Directorate",
     role: "Basic education partner",
+    slug: "education-directorate",
+    category: "government",
+    body: "We work through Ghana Education Service directorates on enrolment drives, retention tracking, reading support and the distribution of learning materials, so that school-level work is recorded in the official system rather than running beside it.",
+    scope: "District and regional education offices",
+    focus: ["education"],
     icon: (
       <svg
         viewBox="0 0 40 40"
@@ -59,6 +89,11 @@ export const partners: Partner[] = [
   {
     name: "Health Directorate",
     role: "Community health partner",
+    slug: "health-directorate",
+    category: "government",
+    body: "Health directorates and district health management teams co-deliver our outreach: screening days, water and sanitation campaigns, adolescent health sessions and referral of cases identified by community volunteers.",
+    scope: "District health management teams and community health compounds",
+    focus: ["community-engagement", "human-rights"],
     icon: (
       <svg
         viewBox="0 0 40 40"
@@ -87,6 +122,11 @@ export const partners: Partner[] = [
   {
     name: "Donor Foundation",
     role: "Programme funding partner",
+    slug: "donor-foundation",
+    category: "funding",
+    body: "Grant-making foundations fund multi-year programme cycles. Each grant is governed by a written agreement, a reporting calendar and an audit trail, and restricted funds are tracked separately from core income.",
+    scope: "National and international grant-makers",
+    focus: ["education", "women-youth-empowerment"],
     icon: (
       <svg
         viewBox="0 0 40 40"
@@ -116,6 +156,11 @@ export const partners: Partner[] = [
   {
     name: "Corporate Partner",
     role: "Social investment partner",
+    slug: "corporate-partner",
+    category: "funding",
+    body: "Companies partner through social investment, in-kind supply, employee volunteering and skills transfer — most often equipment, transport, training venues and professional mentoring for our fellows.",
+    scope: "Ghanaian and diaspora-owned businesses",
+    focus: ["women-youth-empowerment", "fellowships-conferences"],
     icon: (
       <svg
         viewBox="0 0 40 40"
@@ -155,6 +200,11 @@ export const partners: Partner[] = [
   {
     name: "NGO Network",
     role: "Joint delivery partner",
+    slug: "ngo-network",
+    category: "civil-society",
+    body: "Joint delivery with other NGOs and coalitions lets us cover districts none of us could reach alone, share safeguarding standards, and speak with one voice in advocacy on rights, drug abuse and peace building.",
+    scope: "National coalitions and district-level NGO platforms",
+    focus: ["human-rights", "community-engagement"],
     icon: (
       <svg
         viewBox="0 0 40 40"
@@ -197,6 +247,11 @@ export const partners: Partner[] = [
   {
     name: "Diaspora Association",
     role: "Community giving partner",
+    slug: "diaspora-association",
+    category: "civil-society",
+    body: "Hometown and diaspora associations fund and adopt specific community projects, and receive direct reporting with photographs, expenditure and community verification for everything they support.",
+    scope: "Ghanaian associations abroad and hometown groups",
+    focus: ["education", "community-engagement"],
     icon: (
       <svg
         viewBox="0 0 40 40"
@@ -226,6 +281,11 @@ export const partners: Partner[] = [
   {
     name: "Research Institute",
     role: "Evidence and learning partner",
+    slug: "research-institute",
+    category: "knowledge",
+    body: "Universities and research institutes co-design our baselines and evaluations, host fellows, and review the evidence behind what we publish — so our impact claims can survive external scrutiny.",
+    scope: "Universities, think tanks and evaluation partners",
+    focus: ["fellowships-conferences", "education"],
     icon: (
       <svg
         viewBox="0 0 40 40"
@@ -252,3 +312,36 @@ export const partners: Partner[] = [
     ),
   },
 ];
+
+/** Directory groups shown on the partnership page, in display order. */
+export const partnerCategories: {
+  id: PartnerCategory;
+  label: string;
+  body: string;
+}[] = [
+  {
+    id: "government",
+    label: "Government & public institutions",
+    body: "District assemblies and the education and health directorates give our work its mandate, its data and its route into the official district plan.",
+  },
+  {
+    id: "funding",
+    label: "Funders & corporate partners",
+    body: "Grant-makers, companies and social investors who resource programme cycles, equipment and the fellowship programme.",
+  },
+  {
+    id: "civil-society",
+    label: "Civil society & diaspora",
+    body: "NGOs, coalitions, hometown associations and diaspora groups who deliver alongside us or adopt specific community projects.",
+  },
+  {
+    id: "knowledge",
+    label: "Knowledge & research",
+    body: "Universities, think tanks and evaluation partners who test our evidence and host our fellows.",
+  },
+];
+
+/** Partners belonging to one directory group. */
+export function getPartnersByCategory(category: PartnerCategory): Partner[] {
+  return partners.filter((partner) => partner.category === category);
+}

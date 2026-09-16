@@ -60,7 +60,7 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-1 xl:flex">
           {primaryNav.map((link) => (
             <Link
               key={link.href}
@@ -77,7 +77,7 @@ export default function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden items-center gap-2 xl:flex">
           <Link href="/contact" className="btn-ghost">
             Contact
           </Link>
@@ -92,7 +92,7 @@ export default function SiteHeader() {
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-blue-700 lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white text-blue-700 xl:hidden"
         >
           <svg
             viewBox="0 0 24 24"
@@ -113,7 +113,7 @@ export default function SiteHeader() {
       <div
         id="mobile-nav"
         hidden={!open}
-        className="border-t border-line bg-paper lg:hidden"
+        className="border-t border-line bg-paper xl:hidden"
       >
         <nav aria-label="Mobile" className="shell flex flex-col py-4">
           {[...primaryNav, { href: "/contact", label: "Contact" }].map(

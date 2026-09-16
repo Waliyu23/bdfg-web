@@ -63,6 +63,7 @@ export const primaryNav: NavLink[] = [
   { href: "/about", label: "About" },
   { href: "/focus-areas", label: "Focus Areas" },
   { href: "/leadership", label: "Leadership" },
+  { href: "/partners", label: "Partners" },
   { href: "/news", label: "News" },
   { href: "/gallery", label: "Gallery" },
   { href: "/get-involved", label: "Get Involved" },
@@ -71,6 +72,7 @@ export const primaryNav: NavLink[] = [
 export const exploreNav: NavLink[] = [
   { href: "/about", label: "About us" },
   { href: "/leadership", label: "Leadership" },
+  { href: "/partners", label: "Partnership" },
   { href: "/news", label: "News & stories" },
   { href: "/gallery", label: "Gallery" },
   { href: "/get-involved", label: "Get involved" },
