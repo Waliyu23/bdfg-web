@@ -48,18 +48,29 @@ function Crest() {
  * Until the secretariat supplies portraits and names, the image area shows the
  * crest on a tinted panel and the name line reads as "to be confirmed".
  */
-function ProfileCard({ role }: { role: LeadershipRole }) {
+function ProfileCard({
+  role,
+  tone = "light",
+}: {
+  role: LeadershipRole;
+  tone?: "light" | "dark";
+}) {
   const email = role.email ?? site.email;
+  const dark = tone === "dark";
 
   return (
-    <article className="reveal flex flex-col overflow-hidden rounded-xl2 border border-line bg-white shadow-card">
-      <div className="relative aspect-[4/5] w-full overflow-hidden bg-blue-50">
+    <article className="reveal flex flex-col items-center text-center">
+      <div
+        className={`relative h-40 w-40 overflow-hidden rounded-full ring-4 sm:h-44 sm:w-44 ${
+          dark ? "bg-blue-800 ring-white/25" : "bg-blue-50 ring-white/70"
+        }`}
+      >
         {role.photo ? (
           <img
             src={role.photo}
             alt={role.name ? `${role.name}, ${role.title}` : role.title}
-            width={800}
-            height={1000}
+            width={400}
+            height={400}
             loading="lazy"
             decoding="async"
             className="h-full w-full object-cover"
@@ -67,7 +78,7 @@ function ProfileCard({ role }: { role: LeadershipRole }) {
         ) : (
           <span
             aria-hidden="true"
-            className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100"
+            className="absolute inset-0 flex items-center justify-center"
           >
             <img
               src={site.logo}
@@ -76,41 +87,61 @@ function ProfileCard({ role }: { role: LeadershipRole }) {
               height={128}
               loading="lazy"
               decoding="async"
-              className="h-20 w-20 opacity-25"
+              className={`h-20 w-20 ${dark ? "opacity-40" : "opacity-30"}`}
             />
           </span>
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-display text-xl leading-snug text-blue-900">
-          {role.name ?? "Name to be confirmed"}
-        </h3>
-        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-gold-600">
-          {role.title}
-        </p>
-        <a
-          href={`mailto:${email}`}
-          className="mt-3 inline-flex w-fit max-w-full items-center gap-2 break-all text-[0.8125rem] font-medium leading-snug text-blue-700 underline decoration-gold-500 decoration-2 underline-offset-2 transition-colors duration-200 hover:text-blue-900"
+      <h3
+        className={`mt-6 font-display text-xl leading-snug ${
+          dark ? "text-white" : "text-blue-900"
+        }`}
+      >
+        {role.name ?? "Name to be confirmed"}
+      </h3>
+      <p
+        className={`mt-2 text-xs font-semibold uppercase tracking-[0.12em] ${
+          dark ? "text-gold-300" : "text-gold-600"
+        }`}
+      >
+        {role.title}
+      </p>
+      <a
+        href={`mailto:${email}`}
+        className={`mt-3 inline-flex max-w-full items-center justify-center gap-2 break-all text-[0.8125rem] font-medium leading-snug underline decoration-gold-500 decoration-2 underline-offset-2 transition-colors duration-200 ${
+          dark
+            ? "text-white/85 hover:text-white"
+            : "text-blue-700 hover:text-blue-900"
+        }`}
+      >
+        <svg
+          viewBox="0 0 24 24"
+          className="h-4 w-4 shrink-0"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          aria-hidden="true"
         >
-          <svg
-            viewBox="0 0 24 24"
-            className="h-4 w-4 shrink-0"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            aria-hidden="true"
-          >
-            <rect x="3" y="5" width="18" height="14" rx="2" />
-            <path d="m3.5 6.5 8.5 6 8.5-6" strokeLinecap="round" />
-          </svg>
-          {email}
-        </a>
-        <p className="mt-4 text-sm leading-relaxed text-ink/65">{role.body}</p>
-        <p className="mt-4 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-ink/40">
-          {role.group}
-        </p>
-      </div>
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m3.5 6.5 8.5 6 8.5-6" strokeLinecap="round" />
+        </svg>
+        {email}
+      </a>
+      <p
+        className={`mt-4 max-w-[34ch] text-sm leading-relaxed ${
+          dark ? "text-white/70" : "text-ink/70"
+        }`}
+      >
+        {role.body}
+      </p>
+      <p
+        className={`mt-4 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] ${
+          dark ? "text-white/45" : "text-ink/40"
+        }`}
+      >
+        {role.group}
+      </p>
     </article>
   );
 }
@@ -215,7 +246,7 @@ export default function LeadershipPage() {
               non-profit mandate in our incorporation documents.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-y-14 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
             {boardRoles.map((role) => (
               <ProfileCard key={role.title} role={role} />
             ))}
@@ -245,9 +276,9 @@ export default function LeadershipPage() {
               programme in every region.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-y-14 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
             {nationalRoles.map((role) => (
-              <ProfileCard key={role.title} role={role} />
+              <ProfileCard key={role.title} role={role} tone="dark" />
             ))}
           </div>
         </div>
