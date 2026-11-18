@@ -199,7 +199,7 @@ export default function LeadershipPage() {
         eyebrow="Governance"
         title="Board, executives, regions and committees."
         lede="The Foundation is governed by a board of directors and run day to day by national executives at the Accra secretariat, supported by regional executive teams in five regions and five standing committees."
-        image="/images/hero-page-leadership.webp"
+        image="/images/Heros/Leadership%20Hero.jpeg"
         imageAlt="Delegates at an international public assembly representing Ghana"
         crumbs={[{ label: "Leadership" }]}
       />

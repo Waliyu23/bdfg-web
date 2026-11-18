@@ -78,15 +78,12 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Hero art is the largest-contentful paint on this page: preload the
-          exact srcset candidate the browser will pick. */}
+      {/* Hero art is the largest-contentful paint on this page. */}
       <link
         rel="preload"
-        href="/images/hero-community-1200.webp"
+        href="/images/Heros/Hero-1.jpeg"
         as="image"
-        type="image/webp"
-        imageSrcSet="/images/hero-community-480.webp 480w, /images/hero-community-768.webp 768w, /images/hero-community-1200.webp 1200w, /images/hero-community-1536.webp 1536w"
-        imageSizes="100vw"
+        type="image/jpeg"
         fetchPriority="high"
       />
       <HomeHero />
@@ -242,8 +239,8 @@ export default function HomePage() {
         <div className="shell grid gap-12 lg:grid-cols-[1fr_0.95fr] lg:items-center lg:gap-16">
           <div className="reveal-left overflow-hidden rounded-xl2 shadow-card">
             <Photo
-              src="/images/about-field.webp"
-              alt="Field officers walking and talking with community members, including a young man in a wheelchair, on a path in Daboya"
+              src="/images/gallery/1%20Community%20Engagement.jpeg"
+              alt="Volunteers taking part in a community engagement programme"
               width={1536}
               height={1024}
               sizes="(max-width: 1024px) 100vw, 50vw"

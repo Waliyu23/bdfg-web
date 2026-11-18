@@ -37,62 +37,50 @@ const stats = [
   },
 ];
 
-const photos = [
+const galleryCategories = [
   {
-    src: "/images/hero-community.webp",
-    alt: "Women and young women of a northern Ghana community standing together in warm afternoon light",
-    caption: "Community members, Savannah Region",
-    span: "lg:col-span-2 lg:row-span-2",
+    title: "Community Engagement",
+    encodedTitle: "Community%20Engagement",
+    count: 5,
+    alt: "Volunteers taking part in a community engagement programme",
   },
   {
-    src: "/images/focus-education.webp",
-    alt: "Pupils reading at wooden desks while a teacher writes on the chalkboard",
-    caption: "Basic school classroom support",
-    span: "",
+    title: "Education",
+    encodedTitle: "Education",
+    count: 6,
+    alt: "Schoolchildren and community members at an education programme",
   },
   {
-    src: "/images/gallery-2.webp",
-    alt: "Women filling jerrycans at a village borehole hand pump",
-    caption: "Borehole access, North Gonja",
-    span: "",
+    title: "Fellowships & Conferences",
+    encodedTitle: "Fellowships%20%26%20Conferences",
+    count: 3,
+    alt: "Participants attending a fellowship or conference programme",
   },
   {
-    src: "/images/gallery-1.webp",
-    alt: "Young people learning solar panel installation at a workbench",
-    caption: "Solar skills training, Tamale",
-    span: "lg:col-span-2",
+    title: "Human Rights",
+    encodedTitle: "Human%20Rights",
+    count: 3,
+    alt: "Students and community members at a human rights programme",
   },
   {
-    src: "/images/gallery-3.webp",
-    alt: "Girls in school uniform in a circle with a mentor",
-    caption: "Girls education club",
-    span: "",
-  },
-  {
-    src: "/images/focus-human-rights.webp",
-    alt: "Women meeting under a tree during a rights education session",
-    caption: "Rights education durbar",
-    span: "",
-  },
-  {
-    src: "/images/gallery-4.webp",
-    alt: "Disability advocacy meeting in a community centre",
-    caption: "Disability inclusion forum",
-    span: "lg:col-span-2",
-  },
-  {
-    src: "/images/about-field.webp",
-    alt: "Field officers walking and speaking with community members on a dusty path",
-    caption: "Field monitoring visit, Daboya",
-    span: "lg:col-span-2",
-  },
-  {
-    src: "/images/focus-fellowships.webp",
-    alt: "Fellows seated in a conference hall during a presentation",
-    caption: "Annual stakeholder conference",
-    span: "lg:col-span-2",
+    title: "Women & Youth Empowerment",
+    encodedTitle: "Women%20%26%20Youth%20Empowerment",
+    count: 4,
+    alt: "Participants at a women and youth empowerment programme",
   },
 ];
+
+const photos = galleryCategories.flatMap((category) =>
+  Array.from({ length: category.count }, (_, index) => {
+    const number = index + 1;
+    return {
+      src: `/images/gallery/${number}%20${category.encodedTitle}.jpeg`,
+      alt: category.alt,
+      caption: `${category.title} programme ${number}`,
+      span: number === 1 ? "lg:col-span-2" : "",
+    };
+  }),
+);
 
 export default function GalleryPage() {
   return (
@@ -101,7 +89,7 @@ export default function GalleryPage() {
         eyebrow="Gallery & impact"
         title="The work, as it looks on the ground."
         lede="Classrooms, durbars, boreholes, workshops and forums — photographs from the communities where our programmes run, with the numbers behind them."
-        image="/images/hero-page-gallery.webp"
+        image="/images/Heros/Gallery%20Hero.jpeg"
         imageAlt="Young people gathered outdoors during a community programme"
         crumbs={[{ label: "Gallery" }]}
       />

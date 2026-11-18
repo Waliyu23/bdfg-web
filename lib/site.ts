@@ -16,7 +16,7 @@ export const site = {
   officesLabel: "Accra · Tamale · Daboya",
   logo: "/images/logo-crest-128.webp",
   logoSmall: "/images/logo-crest-64.webp",
-  heroImage: "/images/hero-community.webp",
+  heroImage: "/images/Heros/Hero-1.jpeg",
 } as const;
 
 export type Office = {

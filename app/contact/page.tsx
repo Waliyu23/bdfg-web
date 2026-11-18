@@ -37,7 +37,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Talk to the office nearest you."
         lede="One email address reaches the secretariat, and the secretariat routes your message to the right regional office. For urgent matters, call or send a WhatsApp message."
-        image="/images/hero-page-contact.webp"
+        image="/images/Heros/Contact%20Hero.jpeg"
         imageAlt="Better Dream Foundation Ghana community members meeting together"
         crumbs={[{ label: "Contact" }]}
       />

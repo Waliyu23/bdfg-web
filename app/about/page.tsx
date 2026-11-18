@@ -146,8 +146,8 @@ export default function AboutPage() {
         eyebrow="About the Foundation"
         title="Improving lives in the communities that public services reach last."
         lede="Established and incorporated under Ghana's Companies Act in 2001, Better Dream Foundation Ghana is a non-political, non-profit organisation working across Accra, Tamale and Daboya."
-        image="/images/hero-page-about.webp"
-        imageAlt="Community members gathered under trees for a human rights advocacy programme"
+        image="/images/Heros/About%20Hero.jpeg"
+        imageAlt="Participants at a Better Dream Foundation Ghana programme"
         crumbs={[{ label: "About" }]}
       />
 
@@ -160,8 +160,8 @@ export default function AboutPage() {
             </h2>
             <div className="reveal-scale mt-8 overflow-hidden rounded-xl2 shadow-card">
               <Photo
-                src="/images/about-field.webp"
-                alt="Two field officers walking with community members, including a young man in a wheelchair, in Daboya"
+                src="/images/gallery/1%20Community%20Engagement.jpeg"
+                alt="Foundation volunteers taking part in a community programme"
                 width={1536}
                 height={1024}
                 sizes="(max-width: 1024px) 100vw, 45vw"

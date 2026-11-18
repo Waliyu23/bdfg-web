@@ -56,8 +56,8 @@ export default async function FocusAreaPage({
         eyebrow="Focus area"
         title={area.title}
         lede={area.lede}
-        image="/images/hero-page-focus.webp"
-        imageAlt="Community members gathered for a human rights advocacy programme"
+        image="/images/Heros/Focus%20Areas%20Hero.jpeg"
+        imageAlt="Students and community members participating in a school-based programme"
         crumbs={[
           { label: "Focus Areas", href: "/focus-areas" },
           { label: area.title },

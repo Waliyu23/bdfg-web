@@ -151,7 +151,7 @@ export default function PartnersPage() {
         eyebrow="Partnership"
         title="The organisations we build this work with."
         lede="Nothing we deliver happens alone. District assemblies give us mandate, directorates give us systems, funders give us runway, NGOs and diaspora groups give us reach, and research partners keep us honest."
-        image="/images/hero-page-partners.webp"
+        image="/images/Heros/Partners%20Hero.jpeg"
         imageAlt="Civil society representatives gathered for a public forum"
         crumbs={[{ label: "Partnership" }]}
       />

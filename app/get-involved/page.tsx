@@ -71,7 +71,7 @@ export default function GetInvolvedPage() {
         eyebrow="Get involved"
         title="There is a role here that fits what you can give."
         lede="Time, professional skills, a partnership, or funds — every route below has a place in a live programme. Tell us which one, and the regional office nearest you will be in touch."
-        image="/images/hero-page-involved.webp"
+        image="/images/Heros/Get%20Involved%20Hero.jpeg"
         imageAlt="Better Dream Foundation Ghana community members standing together"
         crumbs={[{ label: "Get Involved" }]}
       />
@@ -103,8 +103,8 @@ export default function GetInvolvedPage() {
         <div className="shell grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="reveal-left overflow-hidden rounded-xl2 shadow-card">
             <Photo
-              src="/images/gallery-1.webp"
-              alt="Young people learning solar panel installation at a workbench with an instructor guiding them"
+              src="/images/gallery/1%20Community%20Engagement.jpeg"
+              alt="Volunteers taking part in a community engagement programme"
               width={1536}
               height={1024}
               sizes="(max-width: 1024px) 100vw, 48vw"

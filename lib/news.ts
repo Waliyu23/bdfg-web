@@ -25,9 +25,8 @@ export const news: NewsItem[] = [
       "Five basic schools in the Daboya area now run weekly girls clubs combining mentoring, menstrual health education and study support.",
     lede: "Five basic schools in the Daboya area now run weekly girls clubs combining mentoring, menstrual health education and study support.",
     location: "Daboya, Savannah Region",
-    image: "/images/gallery-3.webp",
-    imageAlt:
-      "Teenage girls in school uniform seated in a circle with a female mentor",
+    image: "/images/gallery/1%20Education.jpeg",
+    imageAlt: "Schoolchildren and community members at an education programme",
     caption: "Daboya, Savannah Region",
     paragraphs: [
       "Better Dream Foundation Ghana has launched girls education clubs in five basic schools around Daboya in the Savannah Region, working with head teachers and district education officers to set up a weekly meeting in each school.",
@@ -46,9 +45,8 @@ export const news: NewsItem[] = [
       "Chiefs, women’s groups and youth leaders from seven communities ranked water, sanitation and hygiene needs ahead of the next planning cycle.",
     lede: "Chiefs, women’s groups and youth leaders from seven communities ranked water, sanitation and hygiene needs ahead of the next planning cycle.",
     location: "North Gonja District",
-    image: "/images/focus-community.webp",
-    imageAlt:
-      "A facilitator with a flipchart addressing a community gathering under a mango tree",
+    image: "/images/gallery/1%20Community%20Engagement.jpeg",
+    imageAlt: "Volunteers taking part in a community engagement programme",
     caption: "North Gonja District",
     paragraphs: [
       "Seven communities in the North Gonja District gathered for a two-day durbar convened by Better Dream Foundation Ghana to review water, sanitation and hygiene conditions and to agree on priorities for the coming year.",
@@ -67,9 +65,8 @@ export const news: NewsItem[] = [
       "The fellowship pairs young Ghanaian leaders with experienced mentors and a community project they must deliver end to end.",
     lede: "The fellowship pairs young Ghanaian leaders with experienced mentors and a community project they must deliver end to end.",
     location: "Accra",
-    image: "/images/focus-fellowships.webp",
-    imageAlt:
-      "Fellows seated in a conference hall taking notes during a presentation",
+    image: "/images/Focus%20Area/Fellowships%20%26%20Conferences.jpeg",
+    imageAlt: "Participants attending a fellowship or conference programme",
     caption: "Accra",
     paragraphs: [
       "Applications are open for the next cohort of the Better Dream Fellowship, a structured programme for young Ghanaians who are already doing community work and want to do it better.",
@@ -88,9 +85,8 @@ export const news: NewsItem[] = [
       "A cohort of out-of-school young people finished a twelve-week course in solar panel installation and basic electricals.",
     lede: "A cohort of out-of-school young people finished a twelve-week course in solar panel installation and basic electricals.",
     location: "Tamale, Northern Region",
-    image: "/images/gallery-1.webp",
-    imageAlt:
-      "Young men and women learning solar panel wiring at a workbench with an instructor",
+    image: "/images/gallery/1%20Women%20%26%20Youth%20Empowerment.jpeg",
+    imageAlt: "Participants at a women and youth empowerment programme",
     caption: "Tamale, Northern Region",
     paragraphs: [
       "A cohort of out-of-school young men and women in Tamale has completed a twelve-week practical course in solar panel installation, basic electrical wiring and small system maintenance.",
@@ -110,9 +106,8 @@ export const news: NewsItem[] = [
       "Persons with disabilities from three regions met district officials to demand accessible facilities and public information.",
     lede: "Persons with disabilities from three regions met district officials to demand accessible facilities and public information.",
     location: "Accra",
-    image: "/images/gallery-4.webp",
-    imageAlt:
-      "Participants including a man in a wheelchair and a woman with crutches raising hands at a community meeting",
+    image: "/images/gallery/1%20Human%20Rights.jpeg",
+    imageAlt: "Students and community members at a human rights programme",
     caption: "Accra",
     paragraphs: [
       "Representatives of disabled persons organisations from the Greater Accra, Northern and Savannah Regions met with district officials at a forum convened by Better Dream Foundation Ghana to discuss access to public services.",
@@ -131,9 +126,8 @@ export const news: NewsItem[] = [
       "Village savings and loans groups formed with the Foundation are now running their own cycles, ledgers and share-outs.",
     lede: "Village savings and loans groups formed with the Foundation are now running their own cycles, ledgers and share-outs.",
     location: "Daboya, Savannah Region",
-    image: "/images/focus-women.webp",
-    imageAlt:
-      "Women working together processing shea butter and sewing in a community workshop",
+    image: "/images/Focus%20Area/WOMEN%20EMPOWERMENT.jpeg",
+    imageAlt: "Participants at a women and youth empowerment programme",
     caption: "Daboya, Savannah Region",
     paragraphs: [
       "Several village savings and loans groups formed with support from Better Dream Foundation Ghana in and around Daboya have completed a full savings cycle without staff facilitation, managing their own meetings, ledgers and share-outs.",

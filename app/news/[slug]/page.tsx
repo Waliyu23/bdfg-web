@@ -68,7 +68,7 @@ export default async function NewsArticlePage({
       <PageHero
         eyebrow={item.category}
         title={item.title}
-        image="/images/hero-page-news.webp"
+        image="/images/Heros/News%20Hero.jpeg"
         imageAlt="Participants at the Ghana Civil Society Forum"
         crumbs={[{ label: "News", href: "/news" }, { label: item.category }]}
       />

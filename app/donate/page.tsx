@@ -96,7 +96,7 @@ export default function DonatePage() {
         eyebrow="Donate"
         title="Your gift buys books, tools, water and training — not overheads."
         lede="Better Dream Foundation Ghana is a non-profit organisation. Donations go into programme delivery in Accra, Tamale and Daboya, and every gift is acknowledged in writing."
-        image="/images/hero-page-donate.webp"
+        image="/images/Heros/Donate%20Hero.jpeg"
         imageAlt="School students taking part in a community learning programme"
         crumbs={[{ label: "Donate" }]}
       />
@@ -105,8 +105,8 @@ export default function DonatePage() {
         <div className="shell">
           <div className="reveal grid gap-8 overflow-hidden rounded-xl2 border border-line bg-white shadow-card lg:grid-cols-2 lg:gap-0">
             <Photo
-              src="/images/donate-impact.webp"
-              alt="A schoolgirl smiling as she receives a stack of exercise books and a school bag"
+              src="/images/gallery/1%20Education.jpeg"
+              alt="Schoolchildren and community members at an education programme"
               width={1536}
               height={1024}
               priority

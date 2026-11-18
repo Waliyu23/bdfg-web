@@ -44,9 +44,8 @@ export const focusAreas: FocusArea[] = [
       "Reduced drop-out among adolescent girls",
       "Stronger school governance at community level",
     ],
-    image: "/images/focus-education.webp",
-    imageAlt:
-      "Secondary school students holding books together in their classroom",
+    image: "/images/Focus%20Area/education.jpeg",
+    imageAlt: "Schoolchildren and community members at an education programme",
   },
   {
     slug: "human-rights",
@@ -77,9 +76,8 @@ export const focusAreas: FocusArea[] = [
       "Referral pathways that survivors actually use",
       "Local by-laws and services that include disabled citizens",
     ],
-    image: "/images/focus-human-rights.webp",
-    imageAlt:
-      "Community members taking part in a public awareness march with information signs",
+    image: "/images/Focus%20Area/HUMAN%20RIGHTS.jpeg",
+    imageAlt: "Students and community members at a human rights programme",
   },
   {
     slug: "women-youth-empowerment",
@@ -110,9 +108,8 @@ export const focusAreas: FocusArea[] = [
       "Savings groups running without external funding",
       "More women and young people in local leadership roles",
     ],
-    image: "/images/focus-women.webp",
-    imageAlt:
-      "Young participants attending a youth empowerment summit",
+    image: "/images/Focus%20Area/WOMEN%20EMPOWERMENT.jpeg",
+    imageAlt: "Participants at a women and youth empowerment programme",
   },
   {
     slug: "community-engagement",
@@ -143,9 +140,8 @@ export const focusAreas: FocusArea[] = [
       "Functioning local committees maintaining facilities",
       "Higher uptake of basic health and WASH services",
     ],
-    image: "/images/focus-community.webp",
-    imageAlt:
-      "Community members gathered around a hand pump during a water access visit",
+    image: "/images/Focus%20Area/COMMUNITY.jpeg",
+    imageAlt: "Community members taking part in a local programme",
   },
   {
     slug: "fellowships-conferences",
@@ -176,9 +172,8 @@ export const focusAreas: FocusArea[] = [
       "Small local organisations able to manage grants properly",
       "Shared learning across regions instead of duplicated effort",
     ],
-    image: "/images/focus-fellowships.webp",
-    imageAlt:
-      "Young people and community members gathered for a fellowship meeting",
+    image: "/images/Focus%20Area/Fellowships%20%26%20Conferences.jpeg",
+    imageAlt: "Participants attending a fellowship or conference programme",
   },
 ];
 

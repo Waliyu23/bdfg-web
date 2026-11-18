@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 const WIDTHS = [480, 768, 1200, 1536];
 
 type PhotoProps = {
-  /** Path to the full-size source, e.g. "/images/hero-community.webp". */
+  /** WebP sources use generated variants; other formats are loaded directly. */
   src: string;
   alt: string;
   width: number;
@@ -34,14 +34,17 @@ export default function Photo({
   className,
   style,
 }: PhotoProps) {
+  const hasResponsiveVariants = /\.webp$/i.test(src);
   const base = src.replace(/\.[^.]+$/, "");
-  const srcSet = WIDTHS.map((w) => `${base}-${w}.webp ${w}w`).join(", ");
+  const srcSet = hasResponsiveVariants
+    ? WIDTHS.map((w) => `${base}-${w}.webp ${w}w`).join(", ")
+    : undefined;
 
   return (
     <img
-      src={`${base}-1200.webp`}
+      src={hasResponsiveVariants ? `${base}-1200.webp` : src}
       srcSet={srcSet}
-      sizes={sizes}
+      sizes={srcSet ? sizes : undefined}
       alt={alt}
       width={width}
       height={height}
