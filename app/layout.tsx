@@ -31,13 +31,9 @@ export const metadata: Metadata = {
     images: [site.heroImage],
   },
   icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png", sizes: "64x64" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-    ],
-    apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    icon: [{ url: "/images/logo-crest.png", type: "image/png" }],
+    shortcut: [{ url: "/images/logo-crest.png", type: "image/png" }],
+    apple: [{ url: "/images/logo-crest.png", type: "image/png" }],
   },
 };
 
