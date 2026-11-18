@@ -82,10 +82,10 @@ export default function HomePage() {
           exact srcset candidate the browser will pick. */}
       <link
         rel="preload"
-        href="/images/hero-slide-rights-1200.webp"
+        href="/images/hero-community-1200.webp"
         as="image"
         type="image/webp"
-        imageSrcSet="/images/hero-slide-rights-480.webp 480w, /images/hero-slide-rights-768.webp 768w, /images/hero-slide-rights-1200.webp 1200w, /images/hero-slide-rights-1536.webp 1536w"
+        imageSrcSet="/images/hero-community-480.webp 480w, /images/hero-community-768.webp 768w, /images/hero-community-1200.webp 1200w, /images/hero-community-1536.webp 1536w"
         imageSizes="100vw"
         fetchPriority="high"
       />
