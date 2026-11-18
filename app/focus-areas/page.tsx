@@ -20,6 +20,8 @@ export default function FocusAreasPage() {
         eyebrow="What we do"
         title="Five focus areas, one connected agenda."
         lede="Each area stands on its own, but they reinforce each other: a girl who stays in school, whose mother has credit, in a community that knows its rights, served by a district that shows up."
+        image="/images/hero-page-focus.webp"
+        imageAlt="Community members gathered for a human rights advocacy programme"
         crumbs={[{ label: "Focus Areas" }]}
       />
 

@@ -46,7 +46,7 @@ export const focusAreas: FocusArea[] = [
     ],
     image: "/images/focus-education.webp",
     imageAlt:
-      "Pupils reading exercise books in a community classroom while a teacher writes on the chalkboard",
+      "Secondary school students holding books together in their classroom",
   },
   {
     slug: "human-rights",
@@ -79,7 +79,7 @@ export const focusAreas: FocusArea[] = [
     ],
     image: "/images/focus-human-rights.webp",
     imageAlt:
-      "Women seated under a large tree during a community rights and advocacy meeting, one standing and speaking",
+      "Community members taking part in a public awareness march with information signs",
   },
   {
     slug: "women-youth-empowerment",
@@ -112,7 +112,7 @@ export const focusAreas: FocusArea[] = [
     ],
     image: "/images/focus-women.webp",
     imageAlt:
-      "Women processing shea butter and sewing fabric together in a small community workshop",
+      "Young participants attending a youth empowerment summit",
   },
   {
     slug: "community-engagement",
@@ -145,7 +145,7 @@ export const focusAreas: FocusArea[] = [
     ],
     image: "/images/focus-community.webp",
     imageAlt:
-      "A facilitator with a flipchart addressing a mixed community gathering of elders, women, men and children",
+      "Community members gathered around a hand pump during a water access visit",
   },
   {
     slug: "fellowships-conferences",
@@ -178,7 +178,7 @@ export const focusAreas: FocusArea[] = [
     ],
     image: "/images/focus-fellowships.webp",
     imageAlt:
-      "Young African fellows taking notes in a conference hall while a woman presents from a lectern",
+      "Young people and community members gathered for a fellowship meeting",
   },
 ];
 

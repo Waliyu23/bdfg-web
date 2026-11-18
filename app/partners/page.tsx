@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import CheckIcon from "@/components/check-icon";
 import CtaBand from "@/components/cta-band";
 import Link from "@/components/link";
+import PartnerMarquee from "@/components/partner-marquee";
 import PageHero from "@/components/page-hero";
 import { focusAreas, getFocusArea } from "@/lib/focus-areas";
 import {
@@ -150,6 +151,8 @@ export default function PartnersPage() {
         eyebrow="Partnership"
         title="The organisations we build this work with."
         lede="Nothing we deliver happens alone. District assemblies give us mandate, directorates give us systems, funders give us runway, NGOs and diaspora groups give us reach, and research partners keep us honest."
+        image="/images/hero-page-partners.webp"
+        imageAlt="Civil society representatives gathered for a public forum"
         crumbs={[{ label: "Partnership" }]}
       />
 
@@ -197,14 +200,17 @@ export default function PartnersPage() {
             ))}
           </nav>
 
-          <p className="reveal mt-8 rounded-xl2 border border-gold-300/60 bg-gold-300/20 p-5 text-sm leading-relaxed text-ink/75">
-            <span className="font-semibold text-blue-900">
-              Note for the secretariat:
-            </span>{" "}
-            the marks below are placeholder crests and generic partner titles.
-            Send the logo, legal name and one line of description for each
-            organisation and this directory becomes the real partner list.
-          </p>
+          <div className="reveal mt-12">
+            <h3 className="font-display text-xl text-blue-900">
+              Partner logos
+            </h3>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink/65">
+              The organisations represented in our partnership network.
+            </p>
+            <div className="mt-6">
+              <PartnerMarquee />
+            </div>
+          </div>
 
           <div className="mt-14 space-y-16">
             {partnerCategories.map((category) => {

@@ -71,6 +71,8 @@ export default function GetInvolvedPage() {
         eyebrow="Get involved"
         title="There is a role here that fits what you can give."
         lede="Time, professional skills, a partnership, or funds — every route below has a place in a live programme. Tell us which one, and the regional office nearest you will be in touch."
+        image="/images/hero-page-involved.webp"
+        imageAlt="Better Dream Foundation Ghana community members standing together"
         crumbs={[{ label: "Get Involved" }]}
       />
 

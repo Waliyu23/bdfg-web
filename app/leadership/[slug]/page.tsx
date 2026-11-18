@@ -154,9 +154,11 @@ export default async function ExecutiveProfilePage({
               <h1 className="mt-5 font-display text-[2rem] leading-[1.1] sm:text-[2.75rem]">
                 {role.name ?? role.title}
               </h1>
-              <p className="mt-3 text-base font-medium text-gold-300 sm:text-lg">
-                {role.name ? role.title : "Office holder to be confirmed"}
-              </p>
+              {role.name && (
+                <p className="mt-3 text-base font-medium text-gold-300 sm:text-lg">
+                  {role.title}
+                </p>
+              )}
               <p className="mt-2 text-sm text-white/60">{role.group}</p>
 
               <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:items-center">
@@ -298,13 +300,6 @@ export default async function ExecutiveProfilePage({
                 </FactRow>
               </dl>
 
-              {!role.name && (
-                <p className="mt-6 rounded-lg bg-gold-300/25 p-4 text-[0.8125rem] leading-relaxed text-ink/75">
-                  The office holder for this post is being confirmed by the
-                  secretariat. Messages sent to the address above reach the
-                  officer currently covering the role.
-                </p>
-              )}
             </div>
 
             {peers.length > 0 && (

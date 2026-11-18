@@ -146,6 +146,8 @@ export default function AboutPage() {
         eyebrow="About the Foundation"
         title="Improving lives in the communities that public services reach last."
         lede="Established and incorporated under Ghana's Companies Act in 2001, Better Dream Foundation Ghana is a non-political, non-profit organisation working across Accra, Tamale and Daboya."
+        image="/images/hero-page-about.webp"
+        imageAlt="Community members gathered under trees for a human rights advocacy programme"
         crumbs={[{ label: "About" }]}
       />
 
@@ -349,16 +351,8 @@ export default function AboutPage() {
             <p className="eyebrow">Our partners</p>
             <PartnerMarquee />
             <p className="mt-6 text-sm leading-relaxed text-ink/65">
-              These are default marks and generic partner titles. Send each
-              organisation&rsquo;s registered name and logo file (SVG or
-              transparent PNG) to{" "}
-              <a
-                href={`mailto:${site.email}`}
-                className="link-underline wrap-any"
-              >
-                {site.email}
-              </a>{" "}
-              and they will replace the defaults exactly as supplied.
+              Partner organisations contribute local knowledge, skills,
+              resources and reach to our programmes.
             </p>
             <Link
               href="/partners"

@@ -21,6 +21,8 @@ export default function NewsIndexPage() {
         eyebrow="News & stories"
         title="What we have been doing, and what we learned."
         lede="Field reports, programme updates and announcements from our three offices. We publish the results that were disappointing as well as the ones that worked."
+        image="/images/hero-page-news.webp"
+        imageAlt="Participants at the Ghana Civil Society Forum"
         crumbs={[{ label: "News" }]}
       />
 

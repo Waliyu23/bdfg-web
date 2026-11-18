@@ -45,8 +45,7 @@ function Crest() {
 
 /**
  * Profile card: portrait on top, then name, position, email and bio.
- * Until the secretariat supplies portraits and names, the image area shows the
- * crest on a tinted panel and the name line reads as "to be confirmed".
+ * Where a portrait is not available, the image area shows the crest placeholder.
  */
 function ProfileCard({
   role,
@@ -108,7 +107,7 @@ function ProfileCard({
           href={`/leadership/${role.slug}`}
           className="underline-offset-4 transition-colors duration-200 hover:underline"
         >
-          {role.name ?? "Name to be confirmed"}
+          {role.name ?? role.title}
         </Link>
       </h3>
       <p
@@ -188,12 +187,20 @@ function RoleList({ roles }: { roles: string[] }) {
 }
 
 export default function LeadershipPage() {
+  const namedBoardRoles = boardRoles.filter((role) => role.name);
+  const namedNationalRoles = nationalRoles.filter((role) => role.name);
+  const visibleSections = sections.filter(
+    (section) => section.id !== "board" || namedBoardRoles.length > 0,
+  );
+
   return (
     <>
       <PageHero
         eyebrow="Governance"
         title="Board, executives, regions and committees."
         lede="The Foundation is governed by a board of directors and run day to day by national executives at the Accra secretariat, supported by regional executive teams in five regions and five standing committees."
+        image="/images/hero-page-leadership.webp"
+        imageAlt="Delegates at an international public assembly representing Ghana"
         crumbs={[{ label: "Leadership" }]}
       />
 
@@ -201,7 +208,7 @@ export default function LeadershipPage() {
         <div className="shell">
           <nav aria-label="On this page" className="reveal">
             <ul className="flex flex-wrap gap-2">
-              {sections.map((section) => (
+              {visibleSections.map((section) => (
                 <li key={section.id}>
                   <a
                     href={`#${section.id}`}
@@ -234,47 +241,27 @@ export default function LeadershipPage() {
         </div>
       </section>
 
-      <section className="pb-4">
-        <div className="shell">
-          <div className="reveal flex flex-col gap-4 rounded-xl2 bg-gold-200/50 p-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-3xl text-sm leading-relaxed text-blue-900">
-              <strong className="font-semibold">
-                Note for the secretariat:
-              </strong>{" "}
-              the positions below are listed with their responsibilities and are
-              ready for names, portraits and short biographies. Send the details
-              to{" "}
-              <a
-                className="font-semibold underline decoration-2 underline-offset-2"
-                href={`mailto:${site.email}`}
-              >
-                {site.email}
-              </a>{" "}
-              and each entry will be completed.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Board of Directors */}
-      <section id="board" className="section scroll-mt-28 bg-gold-400">
-        <div className="shell">
-          <div className="reveal max-w-2xl">
-            <p className="eyebrow">Tier one</p>
-            <h2 className="h2 mt-5 text-blue-900">Board of Directors</h2>
-            <p className="lede mt-5 text-blue-900/80">
-              The board is non-executive. It approves strategy and budgets,
-              appoints the Executive Director, and protects the non-political,
-              non-profit mandate in our incorporation documents.
-            </p>
+      {namedBoardRoles.length > 0 && (
+        <section id="board" className="section scroll-mt-28 bg-gold-400">
+          <div className="shell">
+            <div className="reveal max-w-2xl">
+              <p className="eyebrow">Tier one</p>
+              <h2 className="h2 mt-5 text-blue-900">Board of Directors</h2>
+              <p className="lede mt-5 text-blue-900/80">
+                The board is non-executive. It approves strategy and budgets,
+                appoints the Executive Director, and protects the non-political,
+                non-profit mandate in our incorporation documents.
+              </p>
+            </div>
+            <div className="mt-14 grid gap-y-14 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+              {namedBoardRoles.map((role) => (
+                <ProfileCard key={role.title} role={role} />
+              ))}
+            </div>
           </div>
-          <div className="mt-14 grid gap-y-14 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-            {boardRoles.map((role) => (
-              <ProfileCard key={role.title} role={role} />
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* National Executives */}
       <section
@@ -299,7 +286,7 @@ export default function LeadershipPage() {
             </p>
           </div>
           <div className="mt-14 grid gap-y-14 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-            {nationalRoles.map((role) => (
+            {namedNationalRoles.map((role) => (
               <ProfileCard key={role.title} role={role} tone="dark" />
             ))}
           </div>

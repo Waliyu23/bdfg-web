@@ -101,6 +101,8 @@ export default function GalleryPage() {
         eyebrow="Gallery & impact"
         title="The work, as it looks on the ground."
         lede="Classrooms, durbars, boreholes, workshops and forums — photographs from the communities where our programmes run, with the numbers behind them."
+        image="/images/hero-page-gallery.webp"
+        imageAlt="Young people gathered outdoors during a community programme"
         crumbs={[{ label: "Gallery" }]}
       />
 

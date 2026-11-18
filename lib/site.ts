@@ -61,6 +61,7 @@ export type NavLink = {
 
 export const primaryNav: NavLink[] = [
   { href: "/about", label: "About" },
+  { href: "/academy", label: "BDF Ghana Academy" },
   { href: "/focus-areas", label: "Focus Areas" },
   { href: "/leadership", label: "Leadership" },
   { href: "/partners", label: "Partners" },
@@ -71,6 +72,7 @@ export const primaryNav: NavLink[] = [
 
 export const exploreNav: NavLink[] = [
   { href: "/about", label: "About us" },
+  { href: "/academy", label: "BDF Ghana Academy" },
   { href: "/leadership", label: "Leadership" },
   { href: "/partners", label: "Partnership" },
   { href: "/news", label: "News & stories" },
@@ -89,13 +91,13 @@ export type SocialLink = {
 export const socials: SocialLink[] = [
   {
     label: "Facebook",
-    href: "https://www.facebook.com/betterdreamfoundationghana",
+    href: "https://www.facebook.com/share/1JHBhknjmz/",
     icon: "facebook",
   },
   { label: "X (Twitter)", href: "https://x.com/bdfghana", icon: "x" },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/betterdreamfoundationghana",
+    href: "https://www.instagram.com/betterdreamfoundationg?srtk=anBiamk0YTlydGxl",
     icon: "instagram",
   },
   {

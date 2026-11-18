@@ -5,12 +5,12 @@ import Link from "@/components/link";
 import ArrowRight from "@/components/arrow-right";
 import CtaBand from "@/components/cta-band";
 import FocusTicker from "@/components/focus-ticker";
-import HeroCarousel from "@/components/hero-carousel";
+import HomeHero from "@/components/home-hero";
 import NewsCard from "@/components/news-card";
 import { focusAreas } from "@/lib/focus-areas";
 import { news } from "@/lib/news";
 import PartnerMarquee from "@/components/partner-marquee";
-import { officeLocations, site } from "@/lib/site";
+import { officeLocations } from "@/lib/site";
 
 const principles = [
   {
@@ -82,14 +82,14 @@ export default function HomePage() {
           exact srcset candidate the browser will pick. */}
       <link
         rel="preload"
-        href="/images/hero-community-1200.webp"
+        href="/images/hero-slide-rights-1200.webp"
         as="image"
         type="image/webp"
-        imageSrcSet="/images/hero-community-480.webp 480w, /images/hero-community-768.webp 768w, /images/hero-community-1200.webp 1200w, /images/hero-community-1536.webp 1536w"
-        imageSizes="(max-width: 1024px) 100vw, 46vw"
+        imageSrcSet="/images/hero-slide-rights-480.webp 480w, /images/hero-slide-rights-768.webp 768w, /images/hero-slide-rights-1200.webp 1200w, /images/hero-slide-rights-1536.webp 1536w"
+        imageSizes="100vw"
         fetchPriority="high"
       />
-      <HeroCarousel />
+      <HomeHero />
       <FocusTicker />
 
       {/* Who we are */}
@@ -346,18 +346,8 @@ export default function HomePage() {
 
           <div className="reveal mt-10 flex flex-col gap-4 rounded-xl2 border border-gold-200 bg-gold-50 p-7 sm:flex-row sm:items-center sm:justify-between">
             <p className="max-w-2xl text-sm leading-relaxed text-ink/75">
-              <strong className="font-semibold text-blue-900">
-                Partner logos:
-              </strong>{" "}
-              the marks above are defaults. Send each partner&rsquo;s registered
-              name and logo file (SVG or transparent PNG) to{" "}
-              <a
-                href={`mailto:${site.email}`}
-                className="link-underline break-all"
-              >
-                {site.email}
-              </a>{" "}
-              and they will be displayed exactly as supplied.
+              Partner organisations contribute local knowledge, skills,
+              resources and reach to our programmes.
             </p>
             <Link href="/contact" className="btn-primary shrink-0">
               Start a conversation <ArrowRight />
