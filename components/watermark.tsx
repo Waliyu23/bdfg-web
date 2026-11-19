@@ -47,7 +47,7 @@ export default function Watermark() {
               letterSpacing="6"
               fontFamily="'General Sans', system-ui, sans-serif"
             >
-              GHANA · SINCE 2001
+              GHANA · SINCE {site.founded}
             </text>
           </g>
         </pattern>

@@ -3,12 +3,12 @@ export const site = {
   shortName: "Better Dream Foundation",
   region: "Ghana",
   tagline: "Together we will make better future",
-  founded: "2001",
+  founded: "2022",
   url: "https://betterdreamfoundationghana.org",
   description:
-    "Better Dream Foundation Ghana works with marginalised communities in Accra, Tamale and Daboya — expanding access to social services and promoting sustainable development since 2001.",
+    "Better Dream Foundation Ghana works with marginalised communities in Accra, Tamale and Daboya — expanding access to social services and promoting sustainable development since 2022.",
   shortDescription:
-    "Expanding access to social services and promoting sustainable development with marginalised communities across Ghana since 2001.",
+    "Expanding access to social services and promoting sustainable development with marginalised communities across Ghana since 2022.",
   email: "betterdreamfoundationghana@gmail.com",
   phone: "+233 59 739 9216",
   phoneHref: "tel:+233597399216",

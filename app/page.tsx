@@ -33,10 +33,10 @@ const principles = [
 
 const footprint = [
   {
-    value: "24",
-    suffix: "+",
-    label: "Years of community service",
-    detail: "Incorporated in Ghana since 2001",
+    value: "2022",
+    suffix: "",
+    label: "Year established",
+    detail: "Serving communities across Ghana",
   },
   {
     value: "3",
@@ -95,14 +95,14 @@ export default function HomePage() {
           <div className="reveal">
             <p className="eyebrow">Who we are</p>
             <h2 className="h2 mt-5 text-blue-900">
-              Twenty-four years of showing up in the same communities.
+              Showing up alongside communities since 2022.
             </h2>
           </div>
           <div className="reveal prose-body">
             <p>
               Better Dream Foundation Ghana is a non-political, non-profit
               organisation established and incorporated under Ghana&rsquo;s
-              Companies Act in 2001. We are committed to improving the lives of
+              Companies Act in 2022. We are committed to improving the lives of
               marginalised communities throughout Ghana by expanding access to
               social services and promoting sustainable development.
             </p>

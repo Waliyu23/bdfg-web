@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 
 const stats = [
   {
-    value: "24",
-    suffix: "+",
-    label: "Years of community service",
-    note: "Incorporated in Ghana since 2001",
+    value: "2022",
+    suffix: "",
+    label: "Year established",
+    note: "Serving communities across Ghana",
   },
   {
     value: "3",

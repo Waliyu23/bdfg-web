@@ -12,7 +12,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About the Foundation",
   description:
-    "Established under Ghana's Companies Act in 2001, Better Dream Foundation Ghana is a non-political, non-profit organisation working across Accra, Tamale and Daboya.",
+    "Established under Ghana's Companies Act in 2022, Better Dream Foundation Ghana is a non-political, non-profit organisation working across Accra, Tamale and Daboya.",
 };
 
 const pillars = [
@@ -145,7 +145,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About the Foundation"
         title="Improving lives in the communities that public services reach last."
-        lede="Established and incorporated under Ghana's Companies Act in 2001, Better Dream Foundation Ghana is a non-political, non-profit organisation working across Accra, Tamale and Daboya."
+        lede="Established and incorporated under Ghana's Companies Act in 2022, Better Dream Foundation Ghana is a non-political, non-profit organisation working across Accra, Tamale and Daboya."
         image="/images/Heros/About%20Hero.jpeg"
         imageAlt="Participants at a Better Dream Foundation Ghana programme"
         crumbs={[{ label: "About" }]}
@@ -156,7 +156,7 @@ export default function AboutPage() {
           <div className="reveal">
             <p className="eyebrow">Our story</p>
             <h2 className="h2 mt-5 text-blue-900">
-              Founded in 2001, still in the same districts.
+              Founded in 2022, working alongside communities across Ghana.
             </h2>
             <div className="reveal-scale mt-8 overflow-hidden rounded-xl2 shadow-card">
               <Photo
@@ -172,7 +172,7 @@ export default function AboutPage() {
           <div className="reveal prose-body max-w-prose">
             <p>
               Better Dream Foundation Ghana was established and incorporated
-              under Ghana&rsquo;s Companies Act in 2001 by a group of community
+              under Ghana&rsquo;s Companies Act in 2022 by a group of community
               organisers who kept meeting the same problem: services existed on
               paper, but the households that needed them most could not reach
               them. Distance, cost, disability, illiteracy and gender all stood
