@@ -65,14 +65,14 @@ function rewrite(text, prefix) {
     out = out.split(`,/${root}`).join(`,${prefix}${root}`);
   }
 
-  // Home link: href="/" -> href="../index.html"
-  out = out.split('href="/"').join(`href="${prefix || "./"}index.html"`);
+  // Home link: href="/" -> href="../" (Vercel resolves directory indexes).
+  out = out.split('href="/"').join(`href="${prefix || "./"}"`);
 
   // Route links, with any hash kept intact:
-  // href="/news/" -> "../news/index.html", href="/about/#x" -> "../about/index.html#x"
+  // href="/news/" -> "../news/", href="/about/#x" -> "../about/#x"
   for (const route of ROUTES) {
     const pattern = new RegExp(`href="/${route}/?(#[^"]*)?"`, "g");
-    out = out.replace(pattern, (_m, hash = "") => `href="${prefix}${route}/index.html${hash || ""}"`);
+    out = out.replace(pattern, (_m, hash = "") => `href="${prefix}${route}/${hash || ""}"`);
   }
 
   return out;

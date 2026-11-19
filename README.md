@@ -85,9 +85,11 @@ Tailwind theme extensions in `tailwind.config.ts`:
 ## Static export and hosting
 
 `npm run build` runs `next build` and then `node scripts/relativize.mjs`, which rewrites the
-root-absolute URLs Next emits (`/_next/...`, `/images/...`, `/about/`) into document-relative ones.
-That makes `out/` hostable from a domain root *or* any sub-path (preview proxy, GitHub Pages project
-site, CDN folder).
+root-absolute asset URLs Next emits (`/_next/...`, `/images/...`) and route links into
+document-relative URLs. Route links target trailing-slash directories rather than `index.html`
+files, which lets hosts such as Vercel resolve the exported directory index correctly. That makes
+`out/` hostable from a domain root *or* any sub-path (preview proxy, GitHub Pages project site, CDN
+folder).
 
 Two consequences worth knowing:
 
