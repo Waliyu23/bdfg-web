@@ -30,9 +30,9 @@ export const news: NewsItem[] = [
     dateDisplay: "23 November 2026",
     category: "Public Diplomacy",
     summary:
-      "The Foundation and the Russian Center for Public Diplomacy launched the World Peoples Assembly contest in Accra, bringing together more than 15 civil society organizations, students and policy makers.",
+      "The Foundation and the Russian House of the Center for Public Diplomacy launched the World Peoples Assembly contest in Accra, bringing together more than 15 civil society organizations, students and policy makers.",
     lede:
-      "The Better Dream Foundation Ghana, with support from the Russian Center for Public Diplomacy, launched the International Public Diplomacy Contest in Accra on 23 November 2026. Organized by the World Peoples Assembly, the event brought together more than 15 civil society organizations, students and policy makers to discuss citizen-led diplomacy and international cooperation.",
+      "The Better Dream Foundation Ghana, with support from the Russian House of the Center for Public Diplomacy, launched the International Public Diplomacy Contest in Accra on 23 November 2026. Organized by the World Peoples Assembly, the event brought together more than 15 civil society organizations, students and policy makers to discuss citizen-led diplomacy and international cooperation.",
     location: "Accra, Ghana",
     image:
       "/images/News/News-Russian%20partner/Feature%20image.jpeg",
@@ -58,7 +58,8 @@ export const news: NewsItem[] = [
       {
         src: "/images/News/News-Russian%20partner/4.jpeg",
         alt: "Event participants pose together in front of the partner banner",
-        caption: "Participants with representatives of the partner center",
+        caption:
+          "Participants with representatives of the Russian House of the Center for Public Diplomacy",
       },
       {
         src: "/images/News/News-Russian%20partner/5.jpeg",
@@ -94,7 +95,7 @@ export const news: NewsItem[] = [
     paragraphs: [
       "Madam Yanina, Deputy Executive Director of the World Peoples Assembly, introduced the organization's mission, structure and work. She explained how the Assembly brings people, civil society groups and communities from different countries together to build dialogue, mutual understanding and cooperation beyond traditional government channels.",
       "She outlined the aims of the International Public Diplomacy Contest, which gives young people, civil society organizations and community leaders a platform to present ideas and projects that promote peace, intercultural exchange and international partnership. Madam Yanina formally opened the call for applications and encouraged eligible individuals and organizations across Ghana to participate.",
-      "The Russian partner center for public diplomacy also introduced its mandate and activities. Its representatives described its role in supporting public diplomacy initiatives and fostering people-to-people ties, and invited organizations at the launch to explore possible partnerships.",
+      "The Russian House of the Center for Public Diplomacy also introduced its mandate and activities. Its representatives described its role in supporting public diplomacy initiatives and fostering people-to-people ties, and invited organizations at the launch to explore possible partnerships.",
       "Participants welcomed the initiative with enthusiasm. Representatives of civil society organizations, students and policy makers said the contest offers an opportunity for Ghanaian voices to be heard internationally. Many expressed interest in applying and building lasting links with international partners.",
       "The organizers said the launch marks the beginning of a wider outreach effort to encourage broad participation. Interested applicants can contact Better Dream Foundation Ghana for details about eligibility, application requirements and deadlines.",
     ],
