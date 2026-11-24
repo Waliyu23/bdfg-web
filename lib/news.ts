@@ -10,130 +10,93 @@ export type NewsItem = {
   image: string;
   imageAlt: string;
   caption: string;
+  gallery?: NewsPhoto[];
   paragraphs: string[];
+};
+
+export type NewsPhoto = {
+  src: string;
+  alt: string;
+  caption: string;
 };
 
 /** Sorted newest first. */
 export const news: NewsItem[] = [
   {
-    slug: "daboya-girls-education-club-launch",
-    title: "Girls education clubs launched in five Daboya basic schools",
-    date: "2026-08-18",
-    dateDisplay: "18 August 2026",
-    category: "Education",
-    summary:
-      "Five basic schools in the Daboya area now run weekly girls clubs combining mentoring, menstrual health education and study support.",
-    lede: "Five basic schools in the Daboya area now run weekly girls clubs combining mentoring, menstrual health education and study support.",
-    location: "Daboya, Savannah Region",
-    image: "/images/gallery/1%20Education.jpeg",
-    imageAlt: "Schoolchildren and community members at an education programme",
-    caption: "Daboya, Savannah Region",
-    paragraphs: [
-      "Better Dream Foundation Ghana has launched girls education clubs in five basic schools around Daboya in the Savannah Region, working with head teachers and district education officers to set up a weekly meeting in each school.",
-      "Each club is facilitated by a trained female mentor drawn from the community and follows a simple structure: a study hour, a mentoring conversation, and a health and hygiene session. Schools have also received a term’s supply of sanitary pads, exercise books and reading materials.",
-      "Teachers involved in the pilot report that absenteeism among girls in upper primary has already begun to fall, particularly during examination weeks. Parent-teacher associations in three of the five schools have volunteered to take over the cost of refreshments for the clubs from the next term.",
-      "The Foundation will review the clubs at the end of the academic year with the district directorate before extending the model to additional communities in North Gonja.",
-    ],
-  },
-  {
-    slug: "community-durbar-north-gonja-wash",
-    title: "North Gonja communities set their own WASH priorities at durbar",
-    date: "2026-07-02",
-    dateDisplay: "2 July 2026",
-    category: "Community Engagement",
-    summary:
-      "Chiefs, women’s groups and youth leaders from seven communities ranked water, sanitation and hygiene needs ahead of the next planning cycle.",
-    lede: "Chiefs, women’s groups and youth leaders from seven communities ranked water, sanitation and hygiene needs ahead of the next planning cycle.",
-    location: "North Gonja District",
-    image: "/images/gallery/1%20Community%20Engagement.jpeg",
-    imageAlt: "Volunteers taking part in a community engagement programme",
-    caption: "North Gonja District",
-    paragraphs: [
-      "Seven communities in the North Gonja District gathered for a two-day durbar convened by Better Dream Foundation Ghana to review water, sanitation and hygiene conditions and to agree on priorities for the coming year.",
-      "Participants ranked borehole rehabilitation, household latrine construction and hygiene education as their top three concerns. Two communities also raised the difficulty faced by persons with disabilities in reaching existing water points.",
-      "Each community elected or refreshed a WASH committee, with a requirement that at least half of the members be women and that one seat be reserved for a person with a disability.",
-      "The ranked priorities from the durbar now form the basis of the Foundation’s proposal to partners for the next funding cycle, and will be read back to the same communities at a review meeting before any work begins.",
-    ],
-  },
-  {
-    slug: "better-dream-fellowship-cohort-open",
-    title: "Applications open for the next Better Dream Fellowship cohort",
-    date: "2026-06-11",
-    dateDisplay: "11 June 2026",
-    category: "Fellowships",
-    summary:
-      "The fellowship pairs young Ghanaian leaders with experienced mentors and a community project they must deliver end to end.",
-    lede: "The fellowship pairs young Ghanaian leaders with experienced mentors and a community project they must deliver end to end.",
-    location: "Accra",
-    image: "/images/Focus%20Area/Fellowships%20%26%20Conferences.jpeg",
-    imageAlt: "Participants attending a fellowship or conference programme",
-    caption: "Accra",
-    paragraphs: [
-      "Applications are open for the next cohort of the Better Dream Fellowship, a structured programme for young Ghanaians who are already doing community work and want to do it better.",
-      "Fellows are matched with a mentor, take part in monthly training on project design, safeguarding, monitoring and financial management, and are required to design and deliver a small community project in one of the Foundation’s focus areas.",
-      "The programme is deliberately practical. Fellows present their project results to a panel of partners and community representatives at the end of the cycle, and the strongest projects are considered for follow-on support.",
-      "Prospective applicants can write to the secretariat for the current application window and eligibility details.",
-    ],
-  },
-  {
-    slug: "youth-solar-skills-training-tamale",
-    title: "Youth complete solar installation training in Tamale",
-    date: "2026-05-05",
-    dateDisplay: "5 May 2026",
-    category: "Women & Youth Empowerment",
-    summary:
-      "A cohort of out-of-school young people finished a twelve-week course in solar panel installation and basic electricals.",
-    lede: "A cohort of out-of-school young people finished a twelve-week course in solar panel installation and basic electricals.",
-    location: "Tamale, Northern Region",
-    image: "/images/gallery/1%20Women%20%26%20Youth%20Empowerment.jpeg",
-    imageAlt: "Participants at a women and youth empowerment programme",
-    caption: "Tamale, Northern Region",
-    paragraphs: [
-      "A cohort of out-of-school young men and women in Tamale has completed a twelve-week practical course in solar panel installation, basic electrical wiring and small system maintenance.",
-      "The course was delivered in partnership with local artisans, with most contact hours spent on real installations rather than in the classroom. Graduates received a basic tool kit and were introduced to installers in Tamale who take on apprentices.",
-      "Participants also completed sessions on costing a job, keeping simple records and handling customers, because the Foundation’s experience is that technical skill alone rarely converts into steady income.",
-      "Six graduates have since registered informal businesses together, and the Foundation is tracking the cohort for twelve months to measure earnings rather than only attendance.",
-    ],
-  },
-  {
-    slug: "disability-inclusion-forum-accra",
+    slug: "international-public-diplomacy-contest-launch",
     title:
-      "Disability inclusion forum presses for accessible district services",
-    date: "2026-03-21",
-    dateDisplay: "21 March 2026",
-    category: "Human Rights",
+      "Better Dream Foundation Ghana launches International Public Diplomacy Contest",
+    date: "2026-11-23",
+    dateDisplay: "23 November 2026",
+    category: "Public Diplomacy",
     summary:
-      "Persons with disabilities from three regions met district officials to demand accessible facilities and public information.",
-    lede: "Persons with disabilities from three regions met district officials to demand accessible facilities and public information.",
-    location: "Accra",
-    image: "/images/gallery/1%20Human%20Rights.jpeg",
-    imageAlt: "Students and community members at a human rights programme",
-    caption: "Accra",
-    paragraphs: [
-      "Representatives of disabled persons organisations from the Greater Accra, Northern and Savannah Regions met with district officials at a forum convened by Better Dream Foundation Ghana to discuss access to public services.",
-      "Speakers focused on three issues: physical access to district offices and health facilities, the availability of public information in accessible formats, and the practical use of the district assemblies’ disability fund.",
-      "The forum closed with a set of commitments from participating districts, including a review of ramp and washroom access at named facilities and a standing invitation for disabled persons organisations to attend planning meetings.",
-      "The Foundation will publish a short follow-up review of those commitments and continue to support the organisations to hold the districts to them.",
+      "The Foundation and the Russian Center for Public Diplomacy launched the World Peoples Assembly contest in Accra, bringing together more than 15 civil society organizations, students and policy makers.",
+    lede:
+      "The Better Dream Foundation Ghana, with support from the Russian Center for Public Diplomacy, launched the International Public Diplomacy Contest in Accra on 23 November 2026. Organized by the World Peoples Assembly, the event brought together more than 15 civil society organizations, students and policy makers to discuss citizen-led diplomacy and international cooperation.",
+    location: "Accra, Ghana",
+    image:
+      "/images/News/News-Russian%20partner/Feature%20image.jpeg",
+    imageAlt:
+      "Participants at the launch of the International Public Diplomacy Contest in Accra",
+    caption: "Launch of the International Public Diplomacy Contest, Accra",
+    gallery: [
+      {
+        src: "/images/News/News-Russian%20partner/1.jpeg",
+        alt: "Participants gathered for the contest launch",
+        caption: "Participants at the launch",
+      },
+      {
+        src: "/images/News/News-Russian%20partner/2.jpeg",
+        alt: "Attendees watching a presentation during the launch",
+        caption: "Attendees follow a presentation",
+      },
+      {
+        src: "/images/News/News-Russian%20partner/3.jpeg",
+        alt: "A speaker addresses participants at the event",
+        caption: "A presentation during the launch",
+      },
+      {
+        src: "/images/News/News-Russian%20partner/4.jpeg",
+        alt: "Event participants pose together in front of the partner banner",
+        caption: "Participants with representatives of the partner center",
+      },
+      {
+        src: "/images/News/News-Russian%20partner/5.jpeg",
+        alt: "Participants seated during the launch event",
+        caption: "Participants during the discussion",
+      },
+      {
+        src: "/images/News/News-Russian%20partner/6.jpeg",
+        alt: "Attendees listen to a presentation in the conference room",
+        caption: "The audience during a presentation",
+      },
+      {
+        src: "/images/News/News-Russian%20partner/7.jpeg",
+        alt: "A World Peoples Assembly presentation displayed at the event",
+        caption: "World Peoples Assembly presentation",
+      },
+      {
+        src: "/images/News/News-Russian%20partner/8.jpeg",
+        alt: "A presenter speaks to attendees at the launch",
+        caption: "A presentation to event attendees",
+      },
+      {
+        src: "/images/News/News-Russian%20partner/inline-image-1.jpeg",
+        alt: "Representatives pose together at the launch",
+        caption: "Representatives at the event",
+      },
+      {
+        src: "/images/News/News-Russian%20partner/inline-image-2.jpeg",
+        alt: "Representatives pose in front of the partner banner",
+        caption: "Partner representatives",
+      },
     ],
-  },
-  {
-    slug: "savings-groups-women-daboya",
-    title: "Women’s savings groups reach full self-management in Daboya",
-    date: "2026-01-29",
-    dateDisplay: "29 January 2026",
-    category: "Women & Youth Empowerment",
-    summary:
-      "Village savings and loans groups formed with the Foundation are now running their own cycles, ledgers and share-outs.",
-    lede: "Village savings and loans groups formed with the Foundation are now running their own cycles, ledgers and share-outs.",
-    location: "Daboya, Savannah Region",
-    image: "/images/Focus%20Area/WOMEN%20EMPOWERMENT.jpeg",
-    imageAlt: "Participants at a women and youth empowerment programme",
-    caption: "Daboya, Savannah Region",
     paragraphs: [
-      "Several village savings and loans groups formed with support from Better Dream Foundation Ghana in and around Daboya have completed a full savings cycle without staff facilitation, managing their own meetings, ledgers and share-outs.",
-      "The groups give women access to small loans for petty trading, shea processing and farm inputs at interest rates they set themselves, keeping the interest inside the group rather than paying it to an outside lender.",
-      "Group members have used loans for school fees, medical costs and stock for market days. Several have joined together to buy processing equipment they could not afford individually.",
-      "The Foundation’s role has now reduced to periodic audit support and refresher training for record keepers, which is the intended end point for every group we help to form.",
+      "Madam Yanina, Deputy Executive Director of the World Peoples Assembly, introduced the organization's mission, structure and work. She explained how the Assembly brings people, civil society groups and communities from different countries together to build dialogue, mutual understanding and cooperation beyond traditional government channels.",
+      "She outlined the aims of the International Public Diplomacy Contest, which gives young people, civil society organizations and community leaders a platform to present ideas and projects that promote peace, intercultural exchange and international partnership. Madam Yanina formally opened the call for applications and encouraged eligible individuals and organizations across Ghana to participate.",
+      "The Russian partner center for public diplomacy also introduced its mandate and activities. Its representatives described its role in supporting public diplomacy initiatives and fostering people-to-people ties, and invited organizations at the launch to explore possible partnerships.",
+      "Participants welcomed the initiative with enthusiasm. Representatives of civil society organizations, students and policy makers said the contest offers an opportunity for Ghanaian voices to be heard internationally. Many expressed interest in applying and building lasting links with international partners.",
+      "The organizers said the launch marks the beginning of a wider outreach effort to encourage broad participation. Interested applicants can contact Better Dream Foundation Ghana for details about eligibility, application requirements and deadlines.",
     ],
   },
 ];

@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import CtaBand from "@/components/cta-band";
 import NewsCard from "@/components/news-card";
 import PageHero from "@/components/page-hero";
+import PhotoGallery from "@/components/photo-gallery";
 import { getNewsItem, getRelatedNews, news } from "@/lib/news";
 import { site } from "@/lib/site";
 
@@ -32,7 +33,13 @@ export async function generateMetadata({
       description: item.summary,
       type: "article",
       publishedTime: item.date,
-      images: [item.image],
+      images: [{ url: item.image, alt: item.imageAlt }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: item.title,
+      description: item.summary,
+      images: [{ url: item.image, alt: item.imageAlt }],
     },
   };
 }
@@ -156,6 +163,23 @@ export default async function NewsArticlePage({
           </div>
         </div>
       </article>
+
+      {item.gallery && item.gallery.length > 0 && (
+        <section className="section bg-blue-50">
+          <div className="shell-wide">
+            <div className="reveal max-w-2xl">
+              <p className="eyebrow">Event photos</p>
+              <h2 className="h2 mt-5 text-blue-900">
+                Moments from the launch
+              </h2>
+            </div>
+            <PhotoGallery
+              photos={item.gallery.map((photo) => ({ ...photo, span: "" }))}
+              showCaptions={false}
+            />
+          </div>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="section bg-blue-50">

@@ -17,7 +17,13 @@ export type GalleryPhoto = {
  * lightbox traps Escape and arrow keys, locks background scroll and restores
  * focus to the tile that opened it.
  */
-export default function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
+export default function PhotoGallery({
+  photos,
+  showCaptions = true,
+}: {
+  photos: GalleryPhoto[];
+  showCaptions?: boolean;
+}) {
   const [open, setOpen] = useState<number | null>(null);
   const current = open === null ? null : photos[open];
 
@@ -62,7 +68,7 @@ export default function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
               type="button"
               onClick={() => setOpen(index)}
               className="h-full w-full cursor-zoom-in text-left"
-              aria-label={`Enlarge photo: ${photo.caption}`}
+              aria-label={`Enlarge photo: ${photo.caption || photo.alt}`}
             >
               <Photo
                 src={photo.src}
@@ -74,9 +80,11 @@ export default function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
               />
               <span className="absolute inset-0 bg-blue-900/0 transition-colors duration-300 group-hover:bg-blue-900/10" />
             </button>
-            <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-blue-900/85 via-blue-900/35 to-transparent px-5 pb-4 pt-10 text-xs font-medium text-white">
-              {photo.caption}
-            </figcaption>
+            {showCaptions && (
+              <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-blue-900/85 via-blue-900/35 to-transparent px-5 pb-4 pt-10 text-xs font-medium text-white">
+                {photo.caption}
+              </figcaption>
+            )}
           </figure>
         ))}
       </div>
@@ -85,7 +93,7 @@ export default function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={current.caption}
+          aria-label={current.caption || current.alt}
           onClick={() => setOpen(null)}
           className="fixed inset-0 z-[80] flex items-center justify-center bg-blue-900/85 p-4 backdrop-blur-sm motion-safe:animate-[fade-in_180ms_ease-out] sm:p-8"
         >
@@ -102,9 +110,11 @@ export default function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
               sizes="(max-width: 1024px) 100vw, 900px"
               className="max-h-[75vh] w-full rounded-xl2 object-contain shadow-lift"
             />
-            <p className="mt-4 text-center text-sm text-white/85">
-              {current.caption}
-            </p>
+            {showCaptions && (
+              <p className="mt-4 text-center text-sm text-white/85">
+                {current.caption}
+              </p>
+            )}
 
             <button
               type="button"
