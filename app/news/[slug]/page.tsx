@@ -24,6 +24,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const item = getNewsItem(slug);
   if (!item) return {};
+  const imageUrl = new URL(
+    item.image,
+    "https://bdfg-web.vercel.app",
+  ).toString();
 
   return {
     title: item.title,
@@ -33,13 +37,13 @@ export async function generateMetadata({
       description: item.summary,
       type: "article",
       publishedTime: item.date,
-      images: [{ url: item.image, alt: item.imageAlt }],
+      images: [{ url: imageUrl, alt: item.imageAlt }],
     },
     twitter: {
       card: "summary_large_image",
       title: item.title,
       description: item.summary,
-      images: [{ url: item.image, alt: item.imageAlt }],
+      images: [{ url: imageUrl, alt: item.imageAlt }],
     },
   };
 }
